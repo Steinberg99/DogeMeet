@@ -1,0 +1,86 @@
+/* Styles for the profile page. */
+
+article {   
+    margin-top: 2em;
+}
+
+article div { 
+    position: relative;
+}
+
+.image_container { 
+    padding: 0 1em;
+}
+
+.image_container:after { 
+    position: absolute;
+    content:"";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(196, 196, 196, 0));
+}
+
+article img { 
+    display: block;
+    border: 2px solid #242C37;
+    border-radius: 0.75em;
+    width: 100%;
+}
+
+article h2 { 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 1rem 2.5rem;
+}
+
+section { 
+    margin-bottom: 1.5em;
+}
+
+section h3 { 
+    margin: 1rem 0 0.75rem 0;
+    padding: 0 1.5rem;
+}
+
+section div { 
+    border-top: 2px solid #242C37;
+    border-bottom: 2px solid #242C37;
+    background-color: #151A21;
+    padding: 1em 1.5em;
+}
+
+section div div { 
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    margin-bottom: 0.375rem;
+    padding: 0;
+}
+
+section div div + div { 
+    margin-bottom: 1rem;
+}
+
+section ul { 
+    display: flex;
+    margin-top: 1em;
+}
+
+section ul li { 
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 15px;
+    background-color: #CA9CE1;
+    padding: 0.5em 1em;
+}
+
+section ul li + li { 
+    margin-left: 1rem;
+}
+
+#like_form { 
+    margin-bottom: 2rem;
+}

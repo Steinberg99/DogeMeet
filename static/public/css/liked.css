@@ -1,0 +1,52 @@
+article {
+  margin: 3em 0 calc(3em + 59px) 0;
+}
+
+.section_header {
+  display: flex;
+  align-items: center;
+}
+
+.liked_counter {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  border-radius: 12px;
+  background-color: #ca9ce1;
+  padding-top: 1px;
+  margin-left: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #151a21;
+  border-top: 2px solid #242c37;
+  border-bottom: 2px solid #242c37;
+  padding: 0.75rem 1.5rem;
+}
+
+li + li {
+  border-top: none;
+}
+
+section {
+  margin-left: 1rem;
+}
+
+div {
+  position: fixed;
+  bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+}

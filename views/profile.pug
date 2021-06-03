@@ -1,0 +1,27 @@
+doctype html
+html 
+    include components/head.pug
+    style 
+        include ../static/public/css/profile.css
+    body 
+        include components/header.pug
+        main 
+            article
+                div 
+                    div(class="image_container")
+                        img(src=`${doge.image_link}`, alt=`A picture of ${doge.name}`)
+                    h2= `${doge.name}, ${doge.age}`    
+                section 
+                    h3= `ABOUT ${doge.name.toUpperCase()}`
+                    div
+                        div 
+                            p= location.name
+                            p= location.distance
+                        div 
+                            p Breed 
+                            p= doge.breed
+                        p(class="description")= doge.description
+                        ul 
+                            each vibe in doge.doge_vibe
+                                li= vibe
+            include components/like.pug

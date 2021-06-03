@@ -1,0 +1,30 @@
+{
+  "name": "dogemeet",
+  "version": "1.0.0",
+  "description": "DogeMeet",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steinberg99/DogeMeet.git"
+  },
+  "author": "Stein Bergervoet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Steinberg99/DogeMeet/issues"
+  },
+  "homepage": "https://github.com/Steinberg99/DogeMeet#readme",
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.9",
+    "pug": "^3.0.2"
+  }
+}

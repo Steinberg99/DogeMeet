@@ -1,0 +1,20 @@
+doctype html
+html 
+    include components/head.pug
+    style 
+        include ../static/public/css/liked.css
+    body 
+        include components/header.pug
+        main 
+            article 
+                h3(class="section_header") LIKED DOGGOS
+                    span(class="liked_counter")=likedDoges.length
+                ul
+                    each doge in likedDoges
+                        li 
+                            img(src=doge.profile_image_link, alt=`Profile picture of ${doge.name}`)
+                            section 
+                                h3= doge.name
+                                p= doge.breed
+                div
+                    a(class="primary_button" href="/search/") Search more doggos
