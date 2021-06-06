@@ -3,6 +3,7 @@ const router = express.Router();
 
 let database;
 let doggos;
+let doggo;
 
 router.get('/', async (req, res) => {
   try {
@@ -11,7 +12,7 @@ router.get('/', async (req, res) => {
     let user = await database.collection('users').findOne({ id: 1 });
     let lastQuery = getQuery(user.last_query);
 
-    let doggo = undefined;
+    doggo = undefined;
     let location = undefined;
 
     doggos = await database.collection('doggos').find(lastQuery, {}).toArray();
@@ -39,7 +40,9 @@ router.post('/search-result', async (req, res) => {
     database = req.app.get('database');
     let query = getQuery(req.body);
 
-    let doggo = undefined;
+    console.log(query);
+
+    doggo = undefined;
     let location = undefined;
 
     await database
@@ -65,18 +68,37 @@ router.post('/search-result', async (req, res) => {
   }
 });
 
-router.post('/like', (req, res) => {
+router.post('/like', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
 
-    // TODO:
-    // - Save liked or disliked doggo id
-    // - Render the next doggo or the empty state
+    console.log(req.body);
+
+    // Save the id when a doggo is liked or disliked
+    if (req.body.skip) {
+      await database
+        .collection('users')
+        .updateOne({ id: 1 }, { $push: { disliked_doggos: doggo.id } }); // Dislike
+    } else {
+      await database
+        .collection('users')
+        .updateOne({ id: 1 }, { $push: { liked_doggos: doggo.id } }); // Like
+    }
+
+    // Get the next doggo
+    doggo = getNextDoggo();
+    if (doggo) {
+      location = await database
+        .collection('locations')
+        .findOne({ id: doggo.location_id });
+    } else {
+      location = undefined;
+    }
 
     res.render('home', {
-      doggo: undefined,
-      location: undefined
+      doggo: doggo,
+      location: location
     });
   } catch (error) {
     console.log(error);
@@ -99,7 +121,15 @@ async function filterLikedDoggos() {
       !user.liked_doggos.includes(doggo.id) &&
       !user.disliked_doggos.includes(doggo.id)
   );
-  console.log(doggos);
+}
+
+function getNextDoggo() {
+  for (let i = 1; i < doggos.length; i++) {
+    if (doggo == doggos[i - 1]) {
+      return doggos[i];
+    }
+  }
+  return undefined;
 }
 
 // Export the router
