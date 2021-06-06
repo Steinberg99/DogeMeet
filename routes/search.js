@@ -7,7 +7,6 @@ router.get('/search', async (req, res) => {
     let database = req.app.get('database');
 
     let locations = await database.collection('locations').find().toArray();
-    console.log(locations);
 
     // Render the search page
     res.render('search', {
