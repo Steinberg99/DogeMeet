@@ -29,9 +29,11 @@ app.use(express.urlencoded());
 const homeRouter = require('./routes/home.js');
 const searchRouter = require('./routes/search.js');
 const profileRouter = require('./routes/profile.js');
+const matchesRouter = require('./routes/matches.js');
 app.use('/', homeRouter); // Homepage route
 app.use('/', searchRouter); // Search route
 app.use('/', profileRouter); // Profile route
+app.use('/', matchesRouter); // Matches route
 
 app.use((req, res) => {
   res.status(404).send('Error 404');

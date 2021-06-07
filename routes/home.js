@@ -73,8 +73,6 @@ router.post('/like', async (req, res) => {
     // Get the database conncection
     database = req.app.get('database');
 
-    console.log(req.body);
-
     // Save the id when a doggo is liked or disliked
     if (req.body.skip) {
       await database
