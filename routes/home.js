@@ -1,5 +1,7 @@
+const { ObjectId } = require('mongodb')
 const express = require('express');
 const router = express.Router();
+require('dotenv').config();
 
 let database;
 let doggos;
@@ -9,8 +11,11 @@ router.get('/', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
-    let user = await database.collection('users').findOne({ id: 1 });
-    let lastQuery = getQuery(user.last_query);
+    const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
+    let lastQuery = {};
+    if(Object.keys(user.last_query).length !== 0) { 
+      lastQuery = getQuery(user.lastQuery);
+    }
 
     doggo = undefined;
     let location = undefined;
@@ -47,7 +52,7 @@ router.post('/search-result', async (req, res) => {
 
     await database
       .collection('users')
-      .updateOne({ id: 1 }, { $set: { last_query: req.body } });
+      .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $set: { last_query: req.body } });
 
     doggos = await database.collection('doggos').find(query, {}).toArray();
     await filterLikedDoggos();
@@ -73,17 +78,15 @@ router.post('/like', async (req, res) => {
     // Get the database conncection
     database = req.app.get('database');
 
-    console.log(req.body);
-
     // Save the id when a doggo is liked or disliked
     if (req.body.skip) {
       await database
         .collection('users')
-        .updateOne({ id: 1 }, { $push: { disliked_doggos: doggo.id } }); // Dislike
+        .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { disliked_doggos: doggo.id } }); // Dislike
     } else {
       await database
         .collection('users')
-        .updateOne({ id: 1 }, { $push: { liked_doggos: doggo.id } }); // Like
+        .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { liked_doggos: doggo.id } }); // Like
     }
 
     // Get the next doggo
@@ -115,7 +118,7 @@ function getQuery(params) {
 }
 
 async function filterLikedDoggos() {
-  let user = await database.collection('users').findOne({ id: 1 });
+  const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
   doggos = doggos.filter(
     doggo =>
       !user.liked_doggos.includes(doggo.id) &&

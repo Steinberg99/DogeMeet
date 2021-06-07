@@ -7,10 +7,10 @@ html
         include components/header.pug
         main 
             article 
-                h3(class="section_header") LIKED DOGGOS
-                    span(class="liked_counter")=likedDoggos.length
+                h3(class="section_header") MATCHED DOGGOS
+                    span(class="liked_counter")=matchedDoggos.length
                 ul
-                    each doggo in likedDoggos
+                    each doggo in matchedDoggos
                         li 
                             img(src=doggo.profile_image_link, alt=`Profile picture of ${doggo.name}`)
                             section 
