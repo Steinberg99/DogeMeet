@@ -7,10 +7,9 @@ let database;
 
 async function getMatchedDoggos() {
   try {
-    const UserEnv = process.env.USER_ID;
     const user = await database
       .collection('users')
-      .findOne({ _id: ObjectId(UserEnv) });
+      .findOne({ _id: ObjectId(process.env.USER_ID) });
 
       console.log(user);
 
