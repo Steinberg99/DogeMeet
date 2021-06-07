@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     let location = undefined;
 
     doggos = await database.collection('doggos').find(lastQuery, {}).toArray();
-    await filterLikedDoggos();
+    await filterLikedDislikedDoggos();
 
     if (doggos[0]) {
       doggo = doggos[0];
@@ -40,8 +40,6 @@ router.post('/search-result', async (req, res) => {
     database = req.app.get('database');
     let query = getQuery(req.body);
 
-    console.log(query);
-
     doggo = undefined;
     let location = undefined;
 
@@ -50,7 +48,7 @@ router.post('/search-result', async (req, res) => {
       .updateOne({ id: 1 }, { $set: { last_query: req.body } });
 
     doggos = await database.collection('doggos').find(query, {}).toArray();
-    await filterLikedDoggos();
+    await filterLikedDislikedDoggos();
 
     if (doggos[0]) {
       doggo = doggos[0];
@@ -72,8 +70,6 @@ router.post('/like', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
-
-    console.log(req.body);
 
     // Save the id when a doggo is liked or disliked
     if (req.body.skip) {
@@ -114,7 +110,7 @@ function getQuery(params) {
   };
 }
 
-async function filterLikedDoggos() {
+async function filterLikedDislikedDoggos() {
   let user = await database.collection('users').findOne({ id: 1 });
   doggos = doggos.filter(
     doggo =>
