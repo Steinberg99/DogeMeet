@@ -8,13 +8,13 @@ html
         main 
             article 
                 h3(class="section_header") LIKED DOGGOS
-                    span(class="liked_counter")=likedDoges.length
+                    span(class="liked_counter")=likedDoggos.length
                 ul
-                    each doge in likedDoges
+                    each doggo in likedDoggos
                         li 
-                            img(src=doge.profile_image_link, alt=`Profile picture of ${doge.name}`)
+                            img(src=doggo.profile_image_link, alt=`Profile picture of ${doggo.name}`)
                             section 
-                                h3= doge.name
-                                p= doge.breed
+                                h3= doggo.name
+                                p= doggo.breed
                 div
                     a(class="primary_button" href="/search/") Search more doggos

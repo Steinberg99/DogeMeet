@@ -17,25 +17,25 @@ html
                         h3 Doge Vibe
                         ul(id="doge_vibe_list" class="checkbox_list")
                             li 
-                                input(type="checkbox" id="cute" name="doge_vibes[0]" value="cute")
+                                input(type="checkbox" id="cute" name="doggo_vibes[0]" value="cute")
                                 label(for="cute") Cute
                             li 
-                                input(type="checkbox" id="playful" name="doge_vibes[1]" value="playful")
+                                input(type="checkbox" id="playful" name="doggo_vibes[1]" value="playful")
                                 label(for="playful") Playful
                             li 
-                                input(type="checkbox" id="fluffy" name="doge_vibes[2]" value="fluffy")
+                                input(type="checkbox" id="fluffy" name="doggo_vibes[2]" value="fluffy")
                                 label(for="fluffy") Fluffy
                             li 
-                                input(type="checkbox" id="relaxed" name="doge_vibes[3]" vlaue="relaxed")
+                                input(type="checkbox" id="relaxed" name="doggo_vibes[3]" vlaue="relaxed")
                                 label(for="relaxed") Relaxed
                             li
-                                input(type="checkbox" id="cool" name="doge_vibes[4]" value="cool")
+                                input(type="checkbox" id="cool" name="doggo_vibes[4]" value="cool")
                                 label(for="cool") Cool
                             li 
-                                input(type="checkbox" id="beautiful" name="doge_vibes[5]" value="beautiful")
+                                input(type="checkbox" id="beautiful" name="doggo_vibes[5]" value="beautiful")
                                 label(for="beautiful") Beautiful
                             li 
-                                input(type="checkbox" id="chubby" name="doge_vibes[6]" value="chubby")
+                                input(type="checkbox" id="chubby" name="doggo_vibes[6]" value="chubby")
                                 label(for="chubby") Chubby
                 section 
                     h3(class="section_header") LOCATION PREFRENCES 
@@ -63,7 +63,7 @@ html
                         ul(id="locations_list" class="checkbox_list")
                             each location, index in locations 
                                 li(class="location_list_item" class=location.type)
-                                    input(type="checkbox" id=`locations[${index}]` name=`locations[${index}]` value=`${location.id}`)
+                                    input(type="checkbox" id=`locations[${index}]` name=`location_ids[${index}]` value=`${location.id}`)
                                     label(for=`locations[${index}]`)= location.name
                                         span= location.distance
                 input(id="submit_button" class="primary_button" type="submit" value="Search")

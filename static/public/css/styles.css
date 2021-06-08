@@ -16,8 +16,8 @@ body {
 
 header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items:center;
+  justify-content:flex-start;
   background-color: #151a21;
   height: 4rem;
   padding: 0 1.5rem;
@@ -37,11 +37,17 @@ header {
 header img {
   width: 2em;
   height: 2em;
+  margin-left: 20px;
 }
 
 #profile_image {
   border: none;
   border-radius: none;
+}
+
+#profile_button {
+  position: absolute;
+  right: 24px;
 }
 
 /* Styles for the like component. */

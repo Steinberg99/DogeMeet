@@ -9,19 +9,19 @@ html
             article
                 div 
                     div(class="image_container")
-                        img(src=`${doge.image_link}`, alt=`A picture of ${doge.name}`)
-                    h2= `${doge.name}, ${doge.age}`    
+                        img(src=`${doggo.image_link}`, alt=`A picture of ${doggo.name}`)
+                    h2= `${doggo.name}, ${doggo.age}`    
                 section 
-                    h3= `ABOUT ${doge.name.toUpperCase()}`
+                    h3= `ABOUT ${doggo.name.toUpperCase()}`
                     div
                         div 
                             p= location.name
                             p= location.distance
                         div 
                             p Breed 
-                            p= doge.breed
-                        p(class="description")= doge.description
+                            p= doggo.breed
+                        p(class="description")= doggo.description
                         ul 
-                            each vibe in doge.doge_vibe
+                            each vibe in doggo.doggo_vibe
                                 li= vibe
             include components/like.pug

@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/search', async (req, res) => {
+router.get('/user-profile', async (req, res) => {
   try {
     //Get the database conncection
     let database = req.app.get('database');
 
     let locations = await database.collection('locations').find().toArray();
 
-    // Render the search page
-    res.render('search', {
+    // Render the profile page
+    res.render('user-profile', {
       locations: locations
     });
   } catch (error) {
