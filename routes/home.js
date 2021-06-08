@@ -1,4 +1,4 @@
-const { ObjectId } = require('mongodb')
+const { ObjectId } = require('mongodb');
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
@@ -11,10 +11,12 @@ router.get('/', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
-    const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
+    const user = await database
+      .collection('users')
+      .findOne({ _id: ObjectId(process.env.USER_ID) });
     let lastQuery = {};
-    if(Object.keys(user.last_query).length !== 0) { 
-      lastQuery = getQuery(user.lastQuery);
+    if (Object.keys(user.last_query).length !== 0) {
+      lastQuery = getQuery(user.last_query);
     }
 
     doggo = undefined;
@@ -45,14 +47,15 @@ router.post('/search-result', async (req, res) => {
     database = req.app.get('database');
     let query = getQuery(req.body);
 
-    console.log(query);
-
     doggo = undefined;
     let location = undefined;
 
     await database
       .collection('users')
-      .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $set: { last_query: req.body } });
+      .updateOne(
+        { _id: ObjectId(process.env.USER_ID) },
+        { $set: { last_query: req.body } }
+      );
 
     doggos = await database.collection('doggos').find(query, {}).toArray();
     await filterLikedDoggos();
@@ -82,11 +85,17 @@ router.post('/like', async (req, res) => {
     if (req.body.skip) {
       await database
         .collection('users')
-        .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { disliked_doggos: doggo.id } }); // Dislike
+        .updateOne(
+          { _id: ObjectId(process.env.USER_ID) },
+          { $push: { disliked_doggos: doggo.id } }
+        ); // Dislike
     } else {
       await database
         .collection('users')
-        .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { liked_doggos: doggo.id } }); // Like
+        .updateOne(
+          { _id: ObjectId(process.env.USER_ID) },
+          { $push: { liked_doggos: doggo.id } }
+        ); // Like
     }
 
     // Get the next doggo
@@ -118,7 +127,9 @@ function getQuery(params) {
 }
 
 async function filterLikedDoggos() {
-  const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
+  const user = await database
+    .collection('users')
+    .findOne({ _id: ObjectId(process.env.USER_ID) });
   doggos = doggos.filter(
     doggo =>
       !user.liked_doggos.includes(doggo.id) &&

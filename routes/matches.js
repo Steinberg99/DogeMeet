@@ -1,4 +1,4 @@
-const { ObjectId } = require('mongodb')
+const { ObjectId } = require('mongodb');
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
@@ -11,14 +11,10 @@ async function getMatchedDoggos() {
       .collection('users')
       .findOne({ _id: ObjectId(process.env.USER_ID) });
 
-      console.log(user);
-
     const matchedDoggos = await database
       .collection('doggos')
       .find({ id: { $in: user.liked_doggos } }, {})
       .toArray();
-
-      console.log(matchedDoggos);
 
     return matchedDoggos;
   } catch (error) {
@@ -26,12 +22,11 @@ async function getMatchedDoggos() {
   }
 }
 
-
 router.get('/matches', async (req, res) => {
   database = req.app.get('database');
   try {
     const matchedDoggos = await getMatchedDoggos();
-    res.render('matches', { 
+    res.render('matches', {
       matchedDoggos
     });
   } catch (error) {
@@ -39,4 +34,5 @@ router.get('/matches', async (req, res) => {
   }
 });
 
+// Export the router
 module.exports = router;

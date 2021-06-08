@@ -30,10 +30,12 @@ const homeRouter = require('./routes/home.js');
 const searchRouter = require('./routes/search.js');
 const profileRouter = require('./routes/profile.js');
 const matchesRouter = require('./routes/matches.js');
+const chatRouter = require('./routes/chat.js');
 app.use('/', homeRouter); // Homepage route
 app.use('/', searchRouter); // Search route
 app.use('/', profileRouter); // Profile route
 app.use('/', matchesRouter); // Matches route
+app.use('/', chatRouter); // Chat route
 
 app.use((req, res) => {
   res.status(404).send('Error 404');

@@ -1,0 +1,14 @@
+doctype html
+html 
+    include components/head.pug
+    style 
+        include ../static/public/css/home.css
+    body 
+        header 
+            a(href="/matches/") 
+                img(src="../public/images/arrow_left.svg", alt="Arrow left icon")
+            img(src=recieverDoggo.profile_image_link, alt=`Profile picture of ${recieverDoggo.name}`)
+            h3= recieverDoggo.name
+        main 
+        footer 
+            
