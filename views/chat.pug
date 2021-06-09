@@ -2,7 +2,7 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/home.css
+        include ../static/public/css/chat.css
     body 
         header 
             a(href="/matches/") 
@@ -10,5 +10,34 @@ html
             img(src=recieverDoggo.profile_image_link, alt=`Profile picture of ${recieverDoggo.name}`)
             h3= recieverDoggo.name
         main 
+            each message, index in chatLog.messages
+                if message.sender_id == recieverDoggo._id && index == 0
+                    div(class="recieved-message")
+                        span= getDateString(message.date)
+                        p= message.content
+                else if message.sender_id != recieverDoggo._id && index == 0
+                    div(class="sent-message")
+                        span= getDateString(message.date)
+                        p= message.content
+                else if message.sender_id == recieverDoggo._id && compareDates(chatLog.messages[index - 1].date, message.date)
+                    div(class="recieved-message new-message")
+                        span= getDateString(message.date)
+                        p= message.content
+                else if message.sender_id == recieverDoggo._id
+                    div(class="recieved-message")
+                        span= getDateString(message.date)
+                        p= message.content
+                else if message.sender_id != recieverDoggo._id && compareDates(chatLog.messages[index - 1].date, message.date)
+                    div(class="sent-message new-message")
+                        span= getDateString(message.date)
+                        p= message.content
+                else 
+                    div(class="sent-message")
+                        span= getDateString(message.date)
+                        p= message.content
         footer 
-            
+            form
+                textarea(id="message_input" rows="1" placeholder="Type a message...")
+                button(id="send-button") Send
+        <script src="/socket.io/socket.io.js"></script>
+        script(src="../public/js/chat.js") 

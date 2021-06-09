@@ -1,8 +1,12 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
+const http = require('http');
 const dotenv = require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 4200;
+const server = http.createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(server);
 
 // Establish connection to MongoDB database
 let database;
@@ -41,7 +45,11 @@ app.use((req, res) => {
   res.status(404).send('Error 404');
 });
 
-app.listen(port, () => {
+io.on('connection', socket => {
+  console.log('A user connected');
+});
+
+server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
   connectDatabase().then(() => {
     console.log('Connected to MongoDB');
