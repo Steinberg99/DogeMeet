@@ -30,10 +30,12 @@ const homeRouter = require('./routes/home.js');
 const searchRouter = require('./routes/search.js');
 const profileRouter = require('./routes/profile.js');
 const userprofileRouter = require('./routes/user-profile.js');
+const changepasswordRouter = require('./routes/change-password.js');
 app.use('/', homeRouter); // Homepage route
 app.use('/', searchRouter); // Search route
 app.use('/', profileRouter); // Profile route
 app.use('/', userprofileRouter); // User profile route
+app.use('/', changepasswordRouter); // Change password route
 
 app.use((req, res) => {
   res.status(404).send('Error 404');

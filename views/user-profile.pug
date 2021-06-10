@@ -5,4 +5,28 @@ html
         include ../static/public/css/user-profile.css
     body 
         include components/header.pug
-        main 
+        main
+
+        form(action="#" method="post" enctype='multipart/form-data')
+                section 
+                    h3(class="section_header") PROFILE DATA
+                    div(class="profile_container") 
+                      label(for="nickname") Nickname
+                      input(type="text" name="nickname" value="")
+                    div 
+
+                    div(class="profile_container") 
+                      label(for="email") E-mail
+                      input(type="text" name="email" value="")
+                    div 
+
+                    div(class="profile_container") 
+                      label(for="password") Password
+                      p(class="password") password
+                    div
+
+        a(class="change_password" href="/change-password/") Change password
+        
+
+
+          
