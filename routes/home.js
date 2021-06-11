@@ -88,7 +88,7 @@ router.post('/like', async (req, res) => {
       await database
         .collection('users')
         .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { liked_doggos: doggo.id } }); // Like
-      
+     
       // Get the owner of the current dog
       const owner = await database.collection('users').findOne({ _id: ObjectId(doggo.owner) });
 
