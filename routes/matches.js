@@ -11,14 +11,10 @@ async function getMatchedDoggos() {
       .collection('users')
       .findOne({ _id: ObjectId(process.env.USER_ID) });
 
-      console.log(user);
-
     const matchedDoggos = await database
       .collection('doggos')
-      .find({ id: { $in: user.liked_doggos } }, {})
+      .find({ id: { $in: user.matched_doggos } }, {})
       .toArray();
-
-      console.log(matchedDoggos);
 
     return matchedDoggos;
   } catch (error) {

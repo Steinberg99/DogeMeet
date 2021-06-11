@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
     let lastQuery = {};
     if(Object.keys(user.last_query).length !== 0) { 
-      lastQuery = getQuery(user.lastQuery);
+      lastQuery = getQuery(user.last_query);
     }
 
     doggo = undefined;
@@ -44,8 +44,6 @@ router.post('/search-result', async (req, res) => {
     // Get the database conncection
     database = req.app.get('database');
     let query = getQuery(req.body);
-
-    console.log(query);
 
     doggo = undefined;
     let location = undefined;
@@ -78,6 +76,9 @@ router.post('/like', async (req, res) => {
     // Get the database conncection
     database = req.app.get('database');
 
+    // Get the current user
+    const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
+
     // Save the id when a doggo is liked or disliked
     if (req.body.skip) {
       await database
@@ -87,6 +88,33 @@ router.post('/like', async (req, res) => {
       await database
         .collection('users')
         .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { liked_doggos: doggo.id } }); // Like
+     
+      // Get the owner of the current dog
+      const owner = await database.collection('users').findOne({ _id: ObjectId(doggo.owner) });
+
+      // Get every user that has like me / is a potential match
+      const myPotentialMatches = user.potential_matches.toString()
+    
+      // If the dog owner is in my potential matches
+      if (myPotentialMatches.includes(owner._id)) {
+        // Then add his dog to my matched doggos
+        await database
+        .collection('users')
+        .updateOne({ _id: ObjectId(user._id) }, { $push: { matched_doggos: doggo.id } });
+
+        // And add my dog to his matched doggos
+        await database
+        .collection('users')
+        .updateOne({ _id: ObjectId(owner._id) }, { $push: { matched_doggos: user.doggo_id } });
+        
+      }
+      // Has the dog owner not liked me yet?
+      else {
+        // Then add my user id to his potential matches
+        await database
+        .collection('users')
+        .updateOne({ _id: ObjectId(owner._id) }, { $push: { potential_matches: user._id } });
+      }
     }
 
     // Get the next doggo
@@ -103,6 +131,9 @@ router.post('/like', async (req, res) => {
       doggo: doggo,
       location: location
     });
+
+    // Redirect zodat in de URL niet de post blijft hangen
+    // res.redirect('/')
   } catch (error) {
     console.log(error);
   }
