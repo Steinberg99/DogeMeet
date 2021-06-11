@@ -57,6 +57,18 @@ main {
   display: none;
 }
 
+.sent-message + .sent-message {
+  margin-top: 0.375em;
+}
+
+.sent-message + .sent-message p {
+  border-radius: 18.5px 4.5px 4.5px 18.5px;
+}
+
+.sent-message + .sent-message span {
+  display: none;
+}
+
 .sent-message p {
   color: #0b0e11;
   background-color: #f2befc;
@@ -128,7 +140,7 @@ footer form textarea {
   margin-right: 1em;
 }
 
-footer form button {
+footer form input[type='submit'] {
   color: #ebebeb;
   border: none;
   border-radius: 24.5px;

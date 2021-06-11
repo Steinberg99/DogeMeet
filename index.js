@@ -45,8 +45,25 @@ app.use((req, res) => {
   res.status(404).send('Error 404');
 });
 
+// Handle messages being sent to the server.
 io.on('connection', socket => {
-  console.log('A user connected');
+  socket.on('message-sent', async data => {
+    let message = {
+      sender_id: data.sender_id,
+      content: data.content,
+      date: data.date
+    };
+
+    // Save message in the database
+    await database
+      .collection('chat_logs')
+      .updateOne(
+        { doggo_ids: { $all: [data.sender_id, data.reciever_id] } },
+        { $push: { messages: message } }
+      );
+
+    io.emit('message-sent', data);
+  });
 });
 
 server.listen(port, () => {
