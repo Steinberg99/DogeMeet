@@ -9,8 +9,7 @@ nav {
     padding: 1rem 2rem;
 
     li {
-      width: 1.5rem;
-      height: 1.5rem;
+      @include squareSize(1.5rem);
 
       + li {
         margin-left: 3rem;

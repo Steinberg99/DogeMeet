@@ -5,19 +5,13 @@
 
   img {
     display: block;
-    border: 0.125rem solid $clrBorder;
+    border: $border;
     border-radius: 0.75rem;
     width: 100%;
   }
 
   > div::after {
-    position: absolute;
-    content: '';
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(196, 196, 196, 0));
+    @include imgOverlay;
   }
 
   section {

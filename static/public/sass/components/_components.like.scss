@@ -1,13 +1,13 @@
 .like_form {
   @include flex(center, center);
+  margin-bottom: 2rem;
 
   input[type='submit'] {
     background-color: $clrLight2;
     box-shadow: $shadow;
     border: none;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    @include squareSize(3rem);
 
     &:last-child {
       background-color: $clrLight1;

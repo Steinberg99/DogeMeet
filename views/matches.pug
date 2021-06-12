@@ -5,7 +5,7 @@ html
         include components/header.pug
         main 
             article(class="matches_container")
-                h3(class="section_header") MATCHED DOGGOS
+                h3 MATCHED DOGGOS
                     span(class="liked_counter")=matchedDoggos.length
                 if(matchedDoggos.length > 0)
                         each doggo in matchedDoggos

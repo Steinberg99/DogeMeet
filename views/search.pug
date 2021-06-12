@@ -1,14 +1,12 @@
 doctype html
 html 
     include components/head.pug
-    style 
-        include ../static/public/css/search.css
     body 
         include components/header.pug
         main 
-            form(action="/search-result", method="post") 
-                section 
-                    h3(class="section_header") DOGE PREFRENCES
+            form(class="search_form" action="/search-result", method="post") 
+                section
+                    h3 DOGE PREFRENCES
                     div(class="age_container") 
                         label(class="age_label" for="age") Age 
                         p(id="age_counter") Select an age

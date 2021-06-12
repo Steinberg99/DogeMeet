@@ -1,8 +1,10 @@
 .matches_container {
   margin: 3rem 0;
 
-  .section_header {
+  > h3 {
     @include flex(flex-start, center);
+    margin-bottom: 0.75rem;
+    padding: 0 1.5rem;
 
     .liked_counter {
       @include flex(center, flex-start);
@@ -11,8 +13,7 @@
       background-color: $clrLight1;
       padding-top: 1px;
       margin-left: 0.75rem;
-      width: 1rem;
-      height: 1rem;
+      @include squareSize(1rem);
     }
   }
 
@@ -20,8 +21,8 @@
     @include flex(flex-start, center);
     flex-direction: row;
     background-color: $clrDark2;
-    border-top: 0.125rem solid $clrBorder;
-    border-bottom: 0.125rem solid $clrBorder;
+    border-top: $border;
+    border-bottom: $border;
     padding: 0.75rem 1.5rem;
 
     + li {

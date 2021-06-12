@@ -15,8 +15,7 @@ header {
     }
   }
   img {
-    width: 2rem;
-    height: 2rem;
+    @include squareSize(2rem);
     border: none;
     border-radius: 50%;
   }
