@@ -131,9 +131,6 @@ router.post('/like', async (req, res) => {
       doggo: doggo,
       location: location
     });
-
-    // Redirect zodat in de URL niet de post blijft hangen
-    // res.redirect('/')
   } catch (error) {
     console.log(error);
   }
@@ -153,7 +150,9 @@ async function filterLikedDoggos() {
   doggos = doggos.filter(
     doggo =>
       !user.liked_doggos.includes(doggo.id) &&
-      !user.disliked_doggos.includes(doggo.id)
+      !user.disliked_doggos.includes(doggo.id) && 
+      // Filter out users own doggo(s)
+      doggo.id !== user.doggo_id
   );
 }
 
