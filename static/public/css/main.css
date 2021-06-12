@@ -1,0 +1,134 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background-color: #0b0e11; }
+
+li {
+  list-style-type: none; }
+
+body {
+  font-family: 'Poppins', sans-serif; }
+
+/* Styles for the different headers, paragraphs list elements and labels. */
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #f8f8f8; }
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #f8f8f8; }
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f8f8f8; }
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f8f8f8; }
+
+h5 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f8f8f8; }
+
+.section_header {
+  margin-bottom: 0.75rem;
+  padding: 0 1.5rem; }
+
+p,
+li,
+label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ebebeb; }
+
+.p_small {
+  font-size: 12px; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #151a21;
+  height: 4rem;
+  padding: 0 1.5rem; }
+
+#header_logo {
+  font-weight: 400;
+  padding: 0; }
+
+#header_logo span {
+  color: #ca9ce1;
+  font-weight: 600;
+  font-style: italic; }
+
+header img {
+  width: 2em;
+  height: 2em; }
+
+#profile_image {
+  border: none;
+  border-radius: none; }
+
+#like_form {
+  display: flex;
+  justify-content: center; }
+
+#like_form input[type='submit'] {
+  background-color: #f2befc;
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 1.5rem;
+  width: 3rem;
+  height: 3rem; }
+
+#like_form input[type='submit'] + input[type='submit'] {
+  margin-left: 1.5rem; }
+
+#like_form input[type='submit']:last-child {
+  background-color: #ca9ce1; }
+
+nav {
+  position: fixed;
+  bottom: 1.5em;
+  left: calc(50% - 7.25em); }
+
+nav ul {
+  display: flex;
+  background-color: #151a21;
+  border-radius: 28px;
+  padding: 1em 2em; }
+
+nav li {
+  width: 1.5rem;
+  height: 1.5rem; }
+
+nav li + li {
+  margin-left: 3rem; }
+
+.primary_button {
+  background-color: #f2befc;
+  color: #0b0e11;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 28.5px;
+  padding: 1rem 2rem; }
+
+.secondary_button {
+  background-color: #ca9ce1;
+  color: #f8f8f8;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 22.5px;
+  padding: 0.75rem 1.5rem; }

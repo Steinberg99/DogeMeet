@@ -1,0 +1,21 @@
+nav {
+  position: fixed;
+  bottom: 1.5em;
+  left: calc(50% - 7.25em);
+}
+
+nav ul {
+  display: flex;
+  background-color: #151a21;
+  border-radius: 28px;
+  padding: 1em 2em;
+}
+
+nav li {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+nav li + li {
+  margin-left: 3rem;
+}

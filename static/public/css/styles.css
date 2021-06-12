@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,600&display=swap'); */
 
-*,
+/* *,
 html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
-body {
+/* body {
   font-family: 'Poppins', sans-serif;
   background-color: #0b0e11;
-}
+} */
 
 /* Styles for the header. */
 
-header {
+/* header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,11 +42,11 @@ header img {
 #profile_image {
   border: none;
   border-radius: none;
-}
+} */
 
 /* Styles for the like component. */
 
-#like_form {
+/* #like_form {
   display: flex;
   justify-content: center;
 }
@@ -66,11 +66,11 @@ header img {
 
 #like_form input[type='submit']:last-child {
   background-color: #ca9ce1;
-}
+} */
 
 /* Styles for the nav component. */
 
-nav {
+/* nav {
   position: fixed;
   bottom: 1.5em;
   left: calc(50% - 7.25em);
@@ -90,9 +90,9 @@ nav li {
 
 nav li + li {
   margin-left: 3rem;
-}
+} */
 
-/* Styles for the different headers, paragraphs list elements and labels. */
+/* Styles for the different headers, paragraphs list elements and labels.
 
 h1 {
   font-size: 32px;
@@ -123,12 +123,12 @@ h5 {
   font-weight: 600;
   color: #f8f8f8;
 }
-
-.section_header {
+*/
+/* .section_header {
   margin-bottom: 0.75rem;
   padding: 0 1.5rem;
-}
-
+} */
+/*
 p,
 li,
 label {
@@ -139,20 +139,20 @@ label {
 
 .p_small {
   font-size: 12px;
-}
+} */
 
-li {
+/* li {
   list-style-type: none;
-}
+} */
 
 /* Styles for the differtent buttons */
 
-button,
+/* button,
 input[type='submit'] {
   font-family: 'Poppins', sans-serif;
-}
+} */
 
-.primary_button {
+/* .primary_button {
   background-color: #f2befc;
   color: #0b0e11;
   font-size: 18px;
@@ -170,4 +170,4 @@ input[type='submit'] {
   border: none;
   border-radius: 22.5px;
   padding: 0.75rem 1.5rem;
-}
+} */
