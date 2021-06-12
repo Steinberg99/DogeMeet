@@ -1,39 +1,23 @@
-@mixin flex($justify, $align) {
-  display: flex;
-  justify-content: $justify;
-  align-items: $align;
-}
-
 header {
   @include flex(space-between, center);
   background-color: $clrDark2;
   height: 4rem;
   padding: 0 1.5rem;
-}
 
-#header_logo {
-  font-weight: 400;
-  padding: 0;
-}
+  .header_logo {
+    font-weight: 400;
+    padding: 0;
 
-#header_logo span {
-  color: $clrLight1;
-  font-weight: 600;
-  font-style: italic;
-}
-
-header img {
-  width: 2em;
-  height: 2em;
-}
-
-#profile_image {
-  border: none;
-  border-radius: 1rem;
-}
-
-// hier?
-.section_header {
-  margin-bottom: 0.75rem;
-  padding: 0 1.5rem;
+    span {
+      color: $clrLight1;
+      font-weight: 600;
+      font-style: italic;
+    }
+  }
+  img {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    border-radius: 50%;
+  }
 }

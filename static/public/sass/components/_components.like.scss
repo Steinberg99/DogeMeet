@@ -1,21 +1,21 @@
-#like_form {
-  display: flex;
-  justify-content: center;
-}
+.like_form {
+  @include flex(center, center);
 
-#like_form input[type='submit'] {
-  background-color: #f2befc;
-  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 1.5rem;
-  width: 3rem;
-  height: 3rem;
-}
+  input[type='submit'] {
+    background-color: $clrLight2;
+    box-shadow: $shadow;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
 
-#like_form input[type='submit'] + input[type='submit'] {
-  margin-left: 1.5rem;
-}
+    &:last-child {
+      background-color: $clrLight1;
+      opacity: 0.8;
+    }
 
-#like_form input[type='submit']:last-child {
-  background-color: #ca9ce1;
+    + input[type='submit'] {
+      margin-left: 1.5rem;
+    }
+  }
 }

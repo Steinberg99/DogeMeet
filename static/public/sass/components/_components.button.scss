@@ -6,6 +6,7 @@
   border: none;
   border-radius: 2rem;
   padding: $padding ($padding * 2);
+  text-decoration: none;
 }
 
 .primary_button {
@@ -14,9 +15,4 @@
 
 .secondary_button {
   @include button($clrLight1, $clrText1, 0.875rem, 0.75rem);
-}
-
-button,
-input[type='submit'] {
-  font-family: 'Poppins', sans-serif;
 }

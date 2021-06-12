@@ -1,52 +1,39 @@
-body {
-  font-family: 'Poppins', sans-serif;
+@mixin heading($size) {
+  font-size: $size;
+  font-weight: 600;
+  color: $clrText1;
 }
 
-/* Styles for the different headers, paragraphs list elements and labels. */
-
 h1 {
-  font-size: 32px;
-  font-weight: 600;
-  color: #f8f8f8;
+  @include heading(2rem);
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #f8f8f8;
+  @include heading(1.5rem);
 }
 
 h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #f8f8f8;
+  @include heading(1.125rem);
 }
 
 h4 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #f8f8f8;
+  @include heading(1rem);
 }
 
 h5 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #f8f8f8;
-}
-
-.section_header {
-  margin-bottom: 0.75rem;
-  padding: 0 1.5rem;
+  @include heading(0.875rem);
 }
 
 p,
 li,
 label {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
-  color: #ebebeb;
+  color: $clrText2;
 }
 
-.p_small {
-  font-size: 12px;
+body,
+button,
+input[type='submit'] {
+  font-family: 'Poppins', sans-serif;
 }

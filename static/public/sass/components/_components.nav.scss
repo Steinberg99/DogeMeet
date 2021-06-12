@@ -1,21 +1,20 @@
 nav {
   position: fixed;
-  bottom: 1.5em;
+  bottom: 1.5rem;
   left: calc(50% - 7.25em);
-}
+  ul {
+    @include flex(center, center);
+    background-color: $clrDark2;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
 
-nav ul {
-  display: flex;
-  background-color: #151a21;
-  border-radius: 28px;
-  padding: 1em 2em;
-}
+    li {
+      width: 1.5rem;
+      height: 1.5rem;
 
-nav li {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-nav li + li {
-  margin-left: 3rem;
+      + li {
+        margin-left: 3rem;
+      }
+    }
+  }
 }
