@@ -1,0 +1,36 @@
+doctype html
+html 
+    include components/head.pug
+    style 
+        include ../static/public/css/home.css
+    body 
+        include components/header.pug
+        main 
+
+form
+    fieldset
+        label(for='name') Name
+        input(type='text' value='add first name')
+        label(for='email') Email
+        input(type='text' value='add email')
+        label(for='email') Password
+        input(type='text' value='add password')
+
+form
+    fieldset
+        label(for='name') Name
+        input(type='text' value='add first name')
+        label(for='age') Age
+        input(type='text' value='add age')
+        label(for='breed') Breed
+        input(type='text' value='add breed')
+        label(for='description') Description
+        input(type='text' value='add description')
+        label(for='vibe') Choose your dog's vibe
+        input(type='text' value='add vibe')
+        label(for='location') What is your doge’s favorite place to walk?
+        input(type='text' value='add location')
+        input(id="submit_button" class="primary_button" type="submit" value="continue")
+
+
+include components/nav.pug

@@ -1,0 +1,23 @@
+doctype html
+html 
+    include components/head.pug
+    style 
+        include ../static/public/css/home.css
+    body 
+        include components/header.pug
+        main 
+h3.section_header  CREATE AN ACCOUNT 
+p
+  | Welcome to DogeMeet! Let's fill in your profile so that we can start meeting other dogs.
+form
+    fieldset
+        label(for='name') Name
+        input(type='text' value='add first name')
+        label(for='email') Email
+        input(type='text' value='add email')
+        label(for='email') Password
+        input(type='text' value='add password')
+
+        input(id="submit_button" class="primary_button" type="submit" value="continue")
+
+include components/nav.pug

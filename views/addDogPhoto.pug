@@ -1,0 +1,18 @@
+doctype html
+html 
+    include components/head.pug
+    style 
+        include ../static/public/css/home.css
+    body 
+        include components/header.pug
+        main 
+h3.section_header  ADD A PHOTO OF YOUR DOG
+p
+  | We’re almost there! The last step is to add a picture of your doge.
+form(method='POST' action='/profile-upload-single' enctype='multipart/form-data')
+    div
+        label Upload profile picture
+        input(type='file' name='profile-file' required='')
+    div
+        input(id="submit_button" class="primary_button" type="submit" value="continue")
+            include components/nav.pug
