@@ -32,6 +32,7 @@ socket.on('message-sent', data => {
   `;
 
   messages.appendChild(message);
+  window.scrollTo(0, document.body.scrollHeight);
 });
 
 function getDateString(date) {
