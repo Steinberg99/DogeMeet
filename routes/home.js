@@ -1,4 +1,4 @@
-const { ObjectId } = require('mongodb')
+const { ObjectId } = require('mongodb');
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
@@ -11,18 +11,33 @@ router.get('/', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
-    const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
-    let lastQuery = {};
-    if(Object.keys(user.last_query).length !== 0) { 
-      lastQuery = getQuery(user.last_query);
+
+    // Get the current user
+    const user = await database
+      .collection('users')
+      .findOne({ _id: ObjectId(process.env.USER_ID) });
+
+    // Get the database query
+    let query;
+    // Check if the user has a last query
+    if (Object.keys(user.last_query).length !== 0) {
+      query = await getQuery(user.last_query);
+    } else {
+      // Filter the doggos that have been liked, disliked or belong to the owner
+      let likedDislikedDoggos = user.liked_doggos.concat(user.disliked_doggos);
+      likedDislikedDoggos.push(user.doggo_id);
+      query = {
+        _id: { $nin: likedDislikedDoggos }
+      };
     }
 
     doggo = undefined;
     let location = undefined;
 
-    doggos = await database.collection('doggos').find(lastQuery, {}).toArray();
-    await filterLikedDoggos();
+    // Get the doggos with the previously created query
+    doggos = await database.collection('doggos').find(query, {}).toArray();
 
+    // Render the first doggo when the doggo array is not empty
     if (doggos[0]) {
       doggo = doggos[0];
       location = await database
@@ -43,17 +58,20 @@ router.post('/search-result', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
-    let query = getQuery(req.body);
+    let query = await getQuery(req.body);
 
     doggo = undefined;
     let location = undefined;
 
     await database
       .collection('users')
-      .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $set: { last_query: req.body } });
+      .updateOne(
+        { _id: ObjectId(process.env.USER_ID) },
+        { $set: { last_query: req.body } }
+      );
 
+    // Get the doggos with the previously created query
     doggos = await database.collection('doggos').find(query, {}).toArray();
-    await filterLikedDoggos();
 
     if (doggos[0]) {
       doggo = doggos[0];
@@ -77,43 +95,59 @@ router.post('/like', async (req, res) => {
     database = req.app.get('database');
 
     // Get the current user
-    const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
+    const user = await database
+      .collection('users')
+      .findOne({ _id: ObjectId(process.env.USER_ID) });
 
     // Save the id when a doggo is liked or disliked
     if (req.body.skip) {
       await database
         .collection('users')
-        .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { disliked_doggos: doggo.id } }); // Dislike
+        .updateOne(
+          { _id: ObjectId(process.env.USER_ID) },
+          { $push: { disliked_doggos: doggo._id } }
+        ); // Dislike
     } else {
       await database
         .collection('users')
-        .updateOne({ _id: ObjectId(process.env.USER_ID) }, { $push: { liked_doggos: doggo.id } }); // Like
-     
-      // Get the owner of the current dog
-      const owner = await database.collection('users').findOne({ _id: ObjectId(doggo.owner) });
+        .updateOne(
+          { _id: ObjectId(process.env.USER_ID) },
+          { $push: { liked_doggos: doggo._id } }
+        ); // Like
 
-      // Get every user that has like me / is a potential match
-      const myPotentialMatches = user.potential_matches.toString()
-    
-      // If the dog owner is in my potential matches
-      if (myPotentialMatches.includes(owner._id)) {
-        // Then add his dog to my matched doggos
-        await database
+      // Get the owner of the dog currently being displayed
+      const owner = await database
         .collection('users')
-        .updateOne({ _id: ObjectId(user._id) }, { $push: { matched_doggos: doggo.id } });
+        .findOne({ _id: doggo.owner_id });
+
+      // Get every user that has liked me and is a potential match
+      const myPotentialMatches = user.potential_matches.toString();
+
+      // If the dog owner is in my potential matches then add his dog to my matched doggos
+      if (myPotentialMatches.includes(owner._id)) {
+        await database
+          .collection('users')
+          .updateOne(
+            { _id: ObjectId(user._id) },
+            { $push: { matched_doggos: doggo._id } }
+          );
 
         // And add my dog to his matched doggos
         await database
-        .collection('users')
-        .updateOne({ _id: ObjectId(owner._id) }, { $push: { matched_doggos: user.doggo_id } });
-        
+          .collection('users')
+          .updateOne(
+            { _id: ObjectId(owner._id) },
+            { $push: { matched_doggos: user.doggo_id } }
+          );
       }
-      // Has the dog owner not liked me yet?
+      // If the dog owner has not liked me yet then add my user id to his potential matches
       else {
-        // Then add my user id to his potential matches
         await database
-        .collection('users')
-        .updateOne({ _id: ObjectId(owner._id) }, { $push: { potential_matches: user._id } });
+          .collection('users')
+          .updateOne(
+            { _id: owner._id },
+            { $push: { potential_matches: user._id } }
+          );
       }
     }
 
@@ -136,24 +170,30 @@ router.post('/like', async (req, res) => {
   }
 });
 
-function getQuery(params) {
-  let selectedLocationIds = params.location_ids.map(id => parseInt(id, 10));
-  return {
-    age: { $gt: 0, $lt: parseInt(params.age, 10) },
-    doggo_vibe: { $in: params.doggo_vibes },
-    location_id: { $in: selectedLocationIds }
-  };
-}
+async function getQuery(params) {
+  try {
+    // Get the current user
+    const user = await database
+      .collection('users')
+      .findOne({ _id: ObjectId(process.env.USER_ID) });
 
-async function filterLikedDoggos() {
-  const user = await database.collection('users').findOne({ _id: ObjectId(process.env.USER_ID) });
-  doggos = doggos.filter(
-    doggo =>
-      !user.liked_doggos.includes(doggo.id) &&
-      !user.disliked_doggos.includes(doggo.id) && 
-      // Filter out users own doggo(s)
-      doggo.id !== user.doggo_id
-  );
+    // Filter the doggos that have been liked, disliked or belong to the owner
+    let likedDislikedDoggos = user.liked_doggos.concat(user.disliked_doggos);
+    likedDislikedDoggos.push(user.doggo_id);
+
+    // Get the selected location ids
+    let selectedLocationIds = params.location_ids.map(id => parseInt(id, 10));
+
+    // Return the query
+    return {
+      _id: { $nin: likedDislikedDoggos },
+      age: { $gt: 0, $lt: parseInt(params.age, 10) },
+      doggo_vibe: { $in: params.doggo_vibes },
+      location_id: { $in: selectedLocationIds }
+    };
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function getNextDoggo() {

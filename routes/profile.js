@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const express = require('express');
 const router = express.Router();
 
@@ -7,10 +8,10 @@ router.get('/profile/:doggoProfileId', async (req, res) => {
     let database = req.app.get('database');
 
     // Get the doggo profile and location
-    let doggoProfileId = parseInt(req.params.doggoProfileId, 10);
+    let doggoProfileId = req.params.doggoProfileId;
     let doggoProfile = await database
       .collection('doggos')
-      .findOne({ id: doggoProfileId });
+      .findOne({ _id: ObjectId(doggoProfileId) });
     let location = await database
       .collection('locations')
       .findOne({ id: doggoProfile.location_id });
