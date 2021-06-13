@@ -13,7 +13,7 @@ async function getMatchedDoggos() {
 
     const matchedDoggos = await database
       .collection('doggos')
-      .find({ id: { $in: user.liked_doggos } }, {})
+      .find({ id: { $in: user.matched_doggos } }, {})
       .toArray();
 
     return matchedDoggos;
