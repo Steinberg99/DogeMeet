@@ -5,6 +5,18 @@ require('dotenv').config();
 
 let database;
 
+router.get('/matches', async (req, res) => {
+  database = req.app.get('database');
+  try {
+    const matchedDoggos = await getMatchedDoggos();
+    res.render('matches', {
+      matchedDoggos: matchedDoggos
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 async function getMatchedDoggos() {
   try {
     const user = await database
@@ -13,7 +25,7 @@ async function getMatchedDoggos() {
 
     const matchedDoggos = await database
       .collection('doggos')
-      .find({ id: { $in: user.matched_doggos } }, {})
+      .find({ _id: { $in: user.matched_doggos } }, {})
       .toArray();
 
     return matchedDoggos;
@@ -21,18 +33,6 @@ async function getMatchedDoggos() {
     console.log(error);
   }
 }
-
-router.get('/matches', async (req, res) => {
-  database = req.app.get('database');
-  try {
-    const matchedDoggos = await getMatchedDoggos();
-    res.render('matches', {
-      matchedDoggos
-    });
-  } catch (error) {
-    console.log(error);
-  }
-});
 
 // Export the router
 module.exports = router;

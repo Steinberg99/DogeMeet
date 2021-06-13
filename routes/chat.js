@@ -22,7 +22,7 @@ router.get('/chat/:recieverDoggoId', async (req, res) => {
 
     // Get the chat logs
     let chatLogs = await database.collection('chat_logs').findOne({
-      doggo_ids: { $all: [req.params.recieverDoggoId, user.doggo_id] }
+      doggo_ids: { $all: [ObjectId(req.params.recieverDoggoId), user.doggo_id] }
     });
 
     // Render the chat page
