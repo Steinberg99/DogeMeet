@@ -6,17 +6,18 @@ html
     body 
         include components/header.pug
         main 
+        
 h3.section_header  CREATE AN ACCOUNT 
 p
   | Welcome to DogeMeet! Let's fill in your profile so that we can start meeting other dogs.
-form
-    fieldset
+
+form(action="/createUserProfile", method="post") 
         label(for='name') Name
-        input(type='text' value='add first name')
+        input(type='text' name='name' value='name')
         label(for='email') Email
-        input(type='text' value='add email')
-        label(for='email') Password
-        input(type='text' value='add password')
+        input(type='text' name='email' value='email')
+        label(for='password') Password
+        input(type='text' name='password' value='password')
 
         input(id="submit_button" class="primary_button" type="submit" value="continue")
 
