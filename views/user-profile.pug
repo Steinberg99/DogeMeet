@@ -17,16 +17,17 @@ html
 
                     div(class="profile_container") 
                       label(for="email") E-mail
-                      input(type="email" name="email" value="")
+                      input(type="email" name="email" value='')
                     div 
 
                     div(class="profile_container") 
                       label(for="password") Password
-                      p(class="password") password
+                      p(class="password")= users.password
                     div
 
         a(class="change_password" href="/change-password/") Change password
         
+        input(id="submit_button_acc" class="primary_button" type="submit" value="Save changes" )
 
 
           

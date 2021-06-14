@@ -9,14 +9,10 @@ function validateMatch() {
         alert("Passwords do not match.");
         return false;
     } else {
-        console.log("werkt");
+        alert("Password saved succesfully!");
         return true;
     }
 }
 
 submitButton.addEventListener('click', validateMatch);
-
-// Button display
-
-// Password requirement
 

@@ -63,8 +63,10 @@ h3 {
   #requirements {
     border-bottom: none;
     margin: 1.5rem;
-    display: block;
+    display: none;
   }
+
+   /* Password requirements
 
   #requirements h3, ul, li {
     font-size:13px;
@@ -85,7 +87,6 @@ h3 {
   content: "✔";
 }
 
-/* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
   color: red;
 }
@@ -94,5 +95,5 @@ h3 {
   position: relative;
   left: -15px;
   content: "✖";
-}
+} */
   
