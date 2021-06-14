@@ -7,7 +7,7 @@ html
         include components/header.pug
         main
 
-        form(action="#" method="post" enctype='multipart/form-data')
+        form(action="/user-profile" method="post" enctype='multipart/form-data')
                 section 
                     h3(class="section_header") PROFILE DATA
                     div(class="profile_container") 
@@ -17,7 +17,7 @@ html
 
                     div(class="profile_container") 
                       label(for="email") E-mail
-                      input(type="text" name="email" value="")
+                      input(type="email" name="email" value="")
                     div 
 
                     div(class="profile_container") 

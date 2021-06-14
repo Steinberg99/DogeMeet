@@ -59,3 +59,40 @@ h3 {
   input[type='submit']:disabled {
     opacity: 0.5;
   }
+
+  #requirements {
+    border-bottom: none;
+    margin: 1.5rem;
+    display: block;
+  }
+
+  #requirements h3, ul, li {
+    font-size:13px;
+    font-weight: 500;
+  }
+
+  #requirements ul{
+    margin-left: 1.5rem;
+  }
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -15px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -15px;
+  content: "✖";
+}
+  

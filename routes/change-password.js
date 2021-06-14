@@ -21,3 +21,4 @@ router.get('/change-password', async (req, res) => {
 
 // Export the router
 module.exports = router;
+
