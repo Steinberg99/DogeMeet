@@ -11,11 +11,18 @@ router.get('/mail', async (req, res) => {
   });
 
   router.post('/mail', async (req, res) => {
+    // Get the database conncection
+    database = req.app.get('database');
+    
+    let userEmail 
+
+    const emailUser = await database.collection('users').findOne(userEmail);
+
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'dogemeetapp@gmail.com',
-            pass: 'doggo123.'
+            user: process.env.EMAIL_ADRESS, 
+            pass: process.env.EMAIL_PASSWORD
         }
           });
         
