@@ -27,6 +27,7 @@ router.get('/chat/:recieverDoggoId', async (req, res) => {
 
     // Render the chat page
     res.render('chat', {
+      chatId: chatLogs._id.toString(),
       recieverDoggo: recieverDoggo,
       senderId: user.doggo_id,
       chatLog: chatLogs,

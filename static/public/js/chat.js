@@ -8,6 +8,7 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   if (input.value) {
     let data = {
+      chatId: chatId,
       sender_id: senderId,
       reciever_id: recieverId,
       content: input.value,
@@ -17,6 +18,12 @@ form.addEventListener('submit', e => {
     input.value = '';
   }
 });
+
+window.onload = () => {
+  window.scrollTo(0, messages.scrollHeight);
+};
+
+socket.emit('join', chatId);
 
 socket.on('message-sent', data => {
   let message = document.createElement('li');

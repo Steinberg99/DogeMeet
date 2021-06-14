@@ -41,6 +41,7 @@ html
                 textarea(id="input" rows="1" placeholder="Type a message...")
                 input(type="submit", value="Send")
         script.
+            const chatId = !{JSON.stringify(chatId)}
             const senderId = !{JSON.stringify(senderId)};
             const recieverId = !{JSON.stringify(recieverDoggo._id)};
         script(src="/socket.io/socket.io.js")

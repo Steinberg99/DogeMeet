@@ -1,5 +1,5 @@
 const express = require('express');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const http = require('http');
 const dotenv = require('dotenv').config();
 const app = express();
@@ -45,8 +45,12 @@ app.use((req, res) => {
   res.status(404).send('Error 404');
 });
 
-// Handle messages being sent to the server.
+// Handle chat messages being sent to the server
 io.on('connection', socket => {
+  socket.on('join', chatId => {
+    socket.join(chatId);
+  });
+
   socket.on('message-sent', async data => {
     let message = {
       sender_id: data.sender_id,
@@ -58,11 +62,12 @@ io.on('connection', socket => {
     await database
       .collection('chat_logs')
       .updateOne(
-        { doggo_ids: { $all: [data.sender_id, data.reciever_id] } },
+        { _id: ObjectId(data.chatId) },
         { $push: { messages: message } }
       );
 
-    io.emit('message-sent', data);
+    // Emit the message in the room
+    io.sockets.in(data.chatId).emit('message-sent', data);
   });
 });
 

@@ -58,6 +58,9 @@ router.post('/search-result', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
+
+    console.log(req.body);
+
     let query = await getQuery(req.body);
 
     doggo = undefined;
