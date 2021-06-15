@@ -1,0 +1,114 @@
+.search_form {
+  section {
+    margin-top: 3rem;
+
+    > h3 {
+      margin-bottom: 0.75rem;
+      padding: 0 1.5rem;
+    }
+
+    div {
+      background-color: $clrDark2;
+      border-top: $border;
+      border-bottom: $border;
+      padding: 0 1.5rem;
+
+      + div {
+        border-top: none;
+      }
+
+      h3 {
+        padding: 1rem 0 0.75rem 0;
+      }
+    }
+
+    .age_container {
+      @include flex(space-between, flex-end);
+      flex-wrap: wrap;
+
+      label {
+        font-size: 1.125rem;
+        font-weight: 600;
+        border: none;
+        box-shadow: none;
+        padding: 1rem 0 0 0;
+        margin: 0;
+      }
+
+      input[type='range'] {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: $clrBorder;
+        outline: none;
+        border-radius: 0.5rem;
+        width: 100%;
+        height: 0.25rem;
+        margin: 1.125rem 0 1.625rem 0;
+      }
+
+      input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        background-color: $clrLight2;
+        border-radius: 0.75rem;
+        box-shadow: $shadow;
+        @include squareSize(1.5rem);
+      }
+    }
+    .checkbox_list {
+      @include flex(flex-start, flex-start);
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+
+      input {
+        display: none;
+
+        &:checked + label {
+          color: $clrDark1;
+          background-color: $clrLight2;
+        }
+      }
+
+      label {
+        display: inline-block;
+        cursor: pointer;
+        border: 0.125rem solid $clrLight2;
+        border-radius: 22rem;
+        box-shadow: $shadow;
+        transition: 0.3s;
+        padding: 0.75rem 1.5rem;
+        margin: 0 1rem 0.75rem 0;
+      }
+
+      li:last-child label {
+        margin-right: 0;
+      }
+
+      .location_list_item {
+        width: 100%;
+
+        label {
+          @include flex(space-between, center);
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    #locations_text {
+      margin-bottom: 1rem;
+    }
+  }
+
+  input[type='submit'] {
+    display: block;
+    box-shadow: $shadow;
+    transition: 0.3s;
+    margin: 2rem auto;
+  }
+
+  input[type='submit']:disabled {
+    opacity: 0.5;
+  }
+}

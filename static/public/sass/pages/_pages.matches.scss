@@ -1,0 +1,47 @@
+.matches_container {
+  margin: 3rem 0;
+
+  > h3 {
+    @include flex(flex-start, center);
+    margin-bottom: 0.75rem;
+    padding: 0 1.5rem;
+
+    .liked_counter {
+      @include flex(center, flex-start);
+      font-size: 0.625rem;
+      border-radius: 0.75rem;
+      background-color: $clrLight1;
+      padding-top: 1px;
+      margin-left: 0.75rem;
+      @include squareSize(1rem);
+    }
+  }
+
+  li {
+    @include flex(flex-start, center);
+    flex-direction: row;
+    background-color: $clrDark2;
+    border-top: $border;
+    border-bottom: $border;
+    padding: 0.75rem 1.5rem;
+
+    + li {
+      border-top: none;
+    }
+
+    section {
+      margin-left: 1rem;
+    }
+  }
+
+  .button_container {
+    @include flex(center, center);
+    position: fixed;
+    bottom: 1.5rem;
+    width: 100%;
+  }
+
+  article.empty {
+    padding: 0 1.5rem;
+  }
+}

@@ -1,15 +1,13 @@
 doctype html
 html 
     include components/head.pug
-    style 
-        include ../static/public/css/matches.css
     body 
         include components/header.pug
         main 
-            article 
+            article(class="matches_container")
+                h3 MATCHED DOGGOS
+                    span(class="liked_counter")=matchedDoggos.length
                 if(matchedDoggos.length > 0)
-                    h3(class="section_header") MATCHED DOGGOS
-                        span(class="liked_counter")=matchedDoggos.length
                     ul
                         each doggo in matchedDoggos
                             li 
@@ -19,8 +17,7 @@ html
                                         h3= doggo.name
                                         p= doggo.breed
                 else
-                    article(class="empty_state_article")
-                        h2 No matched doggos :(
+                    article(class="empty")
                         p No worries! Continue liking untill you find your first match!
-                div
-                    a(id="search_link" class="primary_button" href="/search/") Search more doggos
+                div(class="button_container")
+                    a(class="primary_button" href="/search/") Search more doggos
