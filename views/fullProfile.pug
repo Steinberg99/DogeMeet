@@ -2,28 +2,35 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/home.css
+        include ../static/public/css/profile.css
     body 
         include components/header.pug
         main 
-
+section 
+    h3(class="section_header") USER PROFILE
 form(action="/fullProfile", method="get") 
-    fieldset
+     div(class="profile_container")
         label(for='name') Name
-        input(type='text' name='name' value=userInfo.name)
+         input(type='text' name='name' value=userInfo.name)
+     div(class="profile_container")
         label(for='email') Email
         input(type='text' name='email' value=userInfo.email)
+     div(class="profile_container")
         label(for='password') Password
         input(type='text' name='password' value=userInfo.password)
 
-
-    fieldset
+section 
+    h3(class="section_header") DOG PROFILE
+     div(class="profile_container")
         label(for='name') Name
         input(type='text' name='name' value=dogInfo.name)
+     div(class="profile_container")
         label(for='age') Age
         input(type='text' name='age' value=dogInfo.age)
+     div(class="profile_container")
         label(for='breed') Breed
         input(type='text' name='breed' value=dogInfo.breed)
+     div(class="profile_container")
         label(for='description') Description
         input(type='text' name='description' value=dogInfo.description)
         label(for='vibe') Your dog's vibe
@@ -49,7 +56,6 @@ form(action="/fullProfile", method="get")
                 li 
                     input(type="checkbox" id="chubby" name="doggo_vibes[6]" value="chubby")
                     label(for="chubby") Chubby
-
         label(for='location') Your dog’s favorite place to walk
             ul(id="doge_vibe_list" class="checkbox_list")
                 li 

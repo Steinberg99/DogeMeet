@@ -19,10 +19,10 @@ const router = express.Router();
 try {  
       // Get the database connection
     database = req.app.get('database');
-    const query = { name: 'Natascha'};
-    getProfile = await database.collection('users').findOne(query);
+    const userQuery = { _id: '500691074'};
+    getProfile = await database.collection('users').findOne(userQuery);
     
-    const dogQuery = { name: 'chichi'};
+    const dogQuery = { doggoId: '10'};
     getDogProfile = await database.collection('doggos').findOne(dogQuery);
     
     console.log(getProfile)
@@ -38,5 +38,39 @@ try {
         });
     }
 });
+
+router.post('/mail', async (req, res) => {
+    // Get the database conncection
+    database = req.app.get('database');
+        
+    let transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: process.env.EMAIL_ADRESS, 
+            pass: process.env.EMAIL_PASSWORD
+        }
+          });
+        
+          let mailOptions = {
+              from: '"DogeMeet team" <dogemeetapp@gmail.com>', //sender
+              to:'nataschazwolsman@hotmail.com', // receiver
+              subject: 'Welcome to Dogemeet', //subject line
+              text: `hello ${userInfo.name}!
+              
+              Thanks for signing up with us. ` //plain text body
+          };
+        
+          transporter.sendMail(mailOptions, (error, info) => {
+              if (error) {
+                  return console.log(error);
+              } else {
+              console.log("Message sent: %s", info.messageId);
+              console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+              res.render('mail');
+            }
+          });
+   
+  });
+
 // Export the router
 module.exports = router;
