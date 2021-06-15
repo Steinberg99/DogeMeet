@@ -4,24 +4,6 @@ const dotenv = require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 4200;
 
-// Establish connection to MongoDB database
-let database;
-async function connectDatabase() {
-  let client = new MongoClient(process.env.DB_URI, {
-    retryWrites: true,
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  });
-  try {
-    await client.connect();
-    database = client.db(process.env.DB_NAME);
-    // Set the database connection.
-    app.set('database', database);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 app.set('view engine', 'pug');
 app.use(express.static('static'));
 app.use(express.urlencoded());
@@ -47,3 +29,21 @@ app.listen(port, () => {
     console.log('Connected to MongoDB');
   });
 });
+
+// Establish connection to MongoDB database
+let database;
+async function connectDatabase() {
+  let client = new MongoClient(process.env.DB_URI, {
+    retryWrites: true,
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  });
+  try {
+    await client.connect();
+    database = client.db(process.env.DB_NAME);
+    // Set the database connection.
+    app.set('database', database);
+  } catch (error) {
+    console.log(error);
+  }
+}

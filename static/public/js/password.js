@@ -1,5 +1,5 @@
 
-// Function to check Whether both passwords is same or not.
+// Function to check whether both passwords is same or not.
 const submitButton = document.querySelector('#submit_button');
 
 function validateMatch() {
@@ -15,4 +15,5 @@ function validateMatch() {
 }
 
 submitButton.addEventListener('click', validateMatch);
+
 
