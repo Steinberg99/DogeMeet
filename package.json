@@ -4,7 +4,7 @@
   "description": "DogeMeet",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node-sass ./static/public/sass -o ./static/public/css & node index.js",
     "start-server": "nodemon index.js",
     "start-sass": "node-sass -w ./static/public/sass -o ./static/public/css",
     "dev": "npm run start-server & npm run start-sass"
