@@ -20,9 +20,6 @@ article {
 }
 
 li {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   background-color: #151a21;
   border-top: 2px solid #242c37;
   border-bottom: 2px solid #242c37;
@@ -31,6 +28,13 @@ li {
 
 li + li {
   border-top: none;
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
 }
 
 section {
@@ -45,13 +49,17 @@ div {
   width: 100%;
 }
 
-a {
+#search_link {
   display: inline-block;
   text-decoration: none;
   box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
 }
 
 .empty_state_article {
-  padding: 0 24px;
+  padding: 0 2rem;
   margin: 0;
+}
+
+.empty_state_article h2 {
+  margin-bottom: 0.5rem;
 }

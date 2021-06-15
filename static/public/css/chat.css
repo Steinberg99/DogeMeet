@@ -1,0 +1,150 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+header a img {
+  display: block;
+  margin-left: 0;
+}
+
+header img {
+  margin-left: 1em;
+}
+
+header h3 {
+  margin-left: 1rem;
+}
+
+main {
+  margin: 7em 0 7.5em 0;
+}
+
+.sent-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 1.5em;
+  margin-top: 1em;
+}
+
+.recieved-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1.5em;
+  margin-top: 1em;
+}
+
+.new-message span {
+  display: block !important;
+}
+
+.recieved-message + .recieved-message {
+  margin-top: 0.375em;
+}
+
+.recieved-message + .recieved-message p {
+  border-radius: 4.5px 18.5px 18.5px 4.5px;
+}
+
+.recieved-message + .recieved-message span {
+  display: none;
+}
+
+.sent-message + .sent-message {
+  margin-top: 0.375em;
+}
+
+.sent-message + .sent-message p {
+  border-radius: 18.5px 4.5px 4.5px 18.5px;
+}
+
+.sent-message + .sent-message span {
+  display: none;
+}
+
+.sent-message p {
+  color: #0b0e11;
+  background-color: #f2befc;
+  border-radius: 18.5px 18.5px 4.5px 18.5px;
+  max-width: 16rem;
+  padding: 0.5rem 1rem;
+}
+
+.recieved-message p {
+  color: #f8f8f8;
+  background-color: #ca9ce1;
+  border-radius: 18.5px 18.5px 18.5px 4.5px;
+  max-width: 16rem;
+  padding: 0.5rem 1rem;
+}
+
+.sent-message.new-message {
+  margin-top: 1em;
+}
+
+.recieved-message.new-message {
+  margin-top: 1em;
+}
+
+.sent-message.new-message p {
+  border-radius: 18.5px 18.5px 4.5px 18.5px;
+}
+
+.recieved-message.new-message p {
+  border-radius: 18.5px 18.5px 18.5px 4.5px;
+}
+
+.sent-message span,
+.recieved-message span {
+  font-size: 10px;
+  color: #ebebeb;
+  margin-bottom: 0.6em;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background-color: #151a21;
+  height: 4.5em;
+  padding: 0 1.5em;
+}
+
+footer form {
+  display: flex;
+  width: 100%;
+}
+
+footer form textarea {
+  flex-grow: 1;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #ebebeb;
+  border: 2px solid #f2befc;
+  border-radius: 24.5px;
+  outline: none;
+  background-color: #0b0e11;
+  resize: none;
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+  padding: 0.75rem 1.5rem;
+  margin-right: 1em;
+}
+
+footer form input[type='submit'] {
+  color: #ebebeb;
+  border: none;
+  border-radius: 24.5px;
+  background-color: #ca9ce1;
+  box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+  width: 3.0625rem;
+}
