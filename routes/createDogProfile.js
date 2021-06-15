@@ -15,6 +15,7 @@ router.get('/createDogProfile', async (req, res) => {
     // Get the database conncection
     database = req.app.get('database');
     let dogProfile = {
+        doggoId: '10',
         name: req.body.name,
         age: req.body.age,
         breed: req.body.breed,
