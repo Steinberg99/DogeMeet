@@ -2,17 +2,18 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/home.css
+        include ../static/public/css/profile.css
     body 
         include components/header.pug
         main 
-h3.section_header  ADD A PHOTO OF YOUR DOG
-p
-  | We’re almost there! The last step is to add a picture of your doge.
+section 
+    h3(class="section_header") ADD A PHOTO OF YOUR DOG
+    p(class="profileParagraph")
+       | We’re almost there! The last step is to add a picture of your doge.
 form(method='POST' action='/profile-upload-single' enctype='multipart/form-data')
-    div
-        label Upload profile picture
+     div(class="profile_container")
+        label (for='uploadPhoto') Upload profile picture
         input(type='file' name='profile-file' required='')
-    div
+     
         input(id="submit_button" class="primary_button" type="submit" value="continue")
             include components/nav.pug

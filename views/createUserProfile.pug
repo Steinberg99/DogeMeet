@@ -2,20 +2,23 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/home.css
+        include ../static/public/css/profile.css
     body 
         include components/header.pug
         main 
-        
-h3.section_header  CREATE AN ACCOUNT 
-p
-  | Welcome to DogeMeet! Let's fill in your profile so that we can start meeting other dogs.
 
-form(action="/createUserProfile", method="post") 
+    section 
+    h3(class="section_header")  CREATE AN ACCOUNT
+    p(class="profileParagraph")
+        | Welcome to DogeMeet! Let's fill in your profile so that we can start meeting other dogs.
+    form(action="/createUserProfile", method="post") 
+     div(class="profile_container")
         label(for='name') Name
         input(type='text' name='name' value='name')
+     div(class="profile_container")
         label(for='email') Email
         input(type='text' name='email' value='email')
+     div(class="profile_container")
         label(for='password') Password
         input(type='text' name='password' value='password')
 

@@ -84,3 +84,69 @@ section ul li + li {
 #like_form { 
     margin-bottom: 2rem;
 }
+
+h3 {
+    padding: 1rem 0 0.75rem 0;
+  }
+
+  .password {
+    color: white;
+    padding-right: 5.5em;
+  }
+  
+  section {
+    margin: 3em 0 .2em 0;
+    border-bottom: 2px solid #242c37;
+  }
+  
+  section div {
+    background-color: #151a21;
+    align-items: center;
+  }
+  
+  .profile_container {
+    border-top: 2px solid #242c37;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: .7em 7.5em .7em 1.5em;
+  }
+
+  label {
+    color: #ca9ce1;;
+  }
+
+  .change_password {
+    color: white;
+    text-decoration: underline;
+    margin: 1.5rem;
+    font-size: 12px;
+  }
+
+ input {
+    background-color: #151a21;
+    border: none;
+    color: white;
+  }
+
+  button {
+    display: block;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+    margin: 0.5rem auto 1.5rem auto;
+  }
+  
+  input[type='submit'] {
+    display: block;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+    transition: 0.25s;
+    margin: 2rem auto;
+  }
+  
+  input[type='submit']:disabled {
+    opacity: 0.5;
+  }
+
+  .profileParagraph {
+    margin: 1em 2em 1em 2em;
+  }

@@ -19,10 +19,10 @@ const router = express.Router();
 try {  
       // Get the database connection
     database = req.app.get('database');
-    const query = { name: 'Natascha'};
-    getProfile = await database.collection('users').findOne(query);
+    const userQuery = { _id: '500691074'};
+    getProfile = await database.collection('users').findOne(userQuery);
     
-    const dogQuery = { name: 'chichi'};
+    const dogQuery = { doggoId: '10'};
     getDogProfile = await database.collection('doggos').findOne(dogQuery);
     
     console.log(getProfile)

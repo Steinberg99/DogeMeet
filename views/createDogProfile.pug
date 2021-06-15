@@ -2,29 +2,29 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/home.css
+        include ../static/public/css/profile.css
     body 
         include components/header.pug
         main 
-h3.section_header  CREATE A DOG ACCOUNT
-p
-    | Next up, we are going to create an account for your doge. How exciting!
-
-form(action="/createDogProfile", method="post") 
-    fieldset
+    section 
+    h3(class="section_header") CREATE A DOG ACCOUNT
+    p(class="profileParagraph")
+         | Next up, we are going to create an account for your doge. How exciting!
+    form(action="/createDogProfile", method="post") 
+     div(class="profile_container")
         label(for='name') Name
         input(type='text' name='name' value='name')
-
+     div(class="profile_container")
         label(for='age') Age
         //input(type='text' name='age' value='age')
         input(id="age_slider" type="range" name="age" value="0" step="1" min="0" max="15")
-
+     div(class="profile_container")
         label(for='breed') Breed
         input(type='text' name='breed' value='breed')
-
+     div(class="profile_container")
         label(for='description') Description
         input(type='text' name='description' value='description')
-
+     div(class="profile_container")
         label(for='vibe') Choose your dog's vibe
             ul(id="doge_vibe_list" class="checkbox_list")
                 li 
@@ -48,7 +48,7 @@ form(action="/createDogProfile", method="post")
                 li 
                     input(type="checkbox" id="chubby" name="doggo_vibes[6]" value="chubby")
                     label(for="chubby") Chubby
-
+     div(class="profile_container")
         label(for='location') What is your doge’s favorite place to walk?
             ul(id="doge_vibe_list" class="checkbox_list")
                 li 
