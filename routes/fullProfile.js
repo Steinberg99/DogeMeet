@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 
   router.get("/fullProfile",  async (req, res) => {
-    let getProfile = null;
+    //let getProfile = null;
     const userInfo = {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
     };
-    let dogInfo = {
+    const dogInfo = {
         name: req.body.name,
         age: req.body.age,
         breed: req.body.breed,
