@@ -1,15 +1,13 @@
 doctype html
 html 
     include components/head.pug
-    style 
-        include ../static/public/css/chat.css
     body 
-        header 
+        header(class="chat_header")
             a(href="/matches/") 
                 img(src="../public/images/arrow_left.svg", alt="Arrow left icon")
             img(src=recieverDoggo.profile_image_link, alt=`Profile picture of ${recieverDoggo.name}`)
             h3= recieverDoggo.name
-        main 
+        main(class="messages_container")
             ul(id="messages")
                 each message, index in chatLog.messages
                     if message.sender_id == recieverDoggo._id && index == 0
@@ -36,7 +34,7 @@ html
                         li(class="sent-message")
                             span= getDateString(message.date)
                             p= message.content
-        footer 
+        footer(class="message_form_container")
             form(id="form")
                 textarea(id="input" rows="1" placeholder="Type a message...")
                 input(type="submit", value="Send")
