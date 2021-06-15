@@ -58,6 +58,9 @@ router.post('/search-result', async (req, res) => {
   try {
     // Get the database conncection
     database = req.app.get('database');
+
+    console.log(req.body);
+
     let query = await getQuery(req.body);
 
     doggo = undefined;
@@ -139,6 +142,12 @@ router.post('/like', async (req, res) => {
             { _id: ObjectId(owner._id) },
             { $push: { matched_doggos: user.doggo_id } }
           );
+
+        // Create the chat log for the matched doggos
+        await database.collection('chat_logs').insertOne({
+          doggo_ids: [user.doggo_id, doggo._id],
+          messages: []
+        });
       }
       // If the dog owner has not liked me yet then add my user id to his potential matches
       else {
