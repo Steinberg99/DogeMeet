@@ -27,10 +27,10 @@ router.post("/createUserProfile", async (req, res) => {
     <img src="cid:banner"/>
     <h1>Hello ${req.body.name},</h1>
     <h3> Thanks for joining us! Are you ready to meet the most adorable dogs? </h3>
-    <p> These are your credentials to login, in case you forget </p>
-    <p>name: ${req.body.name}</p>
-    <p>email: ${req.body.email}</p>
-    <p>password: ${req.body.password}</p>
+    <p> These are your credentials to login, in case you forget. </p>
+    <p>Name: ${req.body.name}</p>
+    <p>Email: ${req.body.email}</p>
+    <p>Password: ${req.body.password}</p>
     `
     ;
 
