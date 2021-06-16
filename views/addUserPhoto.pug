@@ -2,18 +2,18 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/profile.css
+        include ../static/public/css/createUserprofile.css
     body 
         include components/header.pug
         main 
 section 
-    h3(class="section_header") ADD PROFILE PHOTO
+    h3(class="headerProfile") ADD PROFILE PHOTO
     p(class="profileParagraph")
      | Add a nice profile photo to complete your user profile.
     form(method='POST' action='/addUserPhoto' enctype='multipart/form-data')
      div(class="profile_container")
         label Upload profile picture
-        input(type='file' name='profile-file' required='')
+        input(type='file' name='userPhoto' required='')
          
-        input(id="submit_button" class="primary_button" type="submit" value="continue")
+        input(id="submit_button" class="primary_button_profile" type="submit" value="continue")
 include components/nav.pug

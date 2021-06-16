@@ -2,18 +2,18 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/profile.css
+        include ../static/public/css/createUserprofile.css
     body 
         include components/header.pug
         main 
 section 
-    h3(class="section_header") ADD A PHOTO OF YOUR DOG
+    h3(class="headerProfile") ADD A PHOTO OF YOUR DOG
     p(class="profileParagraph")
-       | We’re almost there! The last step is to add a picture of your doge.
-form(method='POST' action='/profile-upload-single' enctype='multipart/form-data')
+        | We’re almost there! The last step is to add a picture of your doge.
+    form(method='POST' action='/addDogPhoto' enctype='multipart/form-data')
      div(class="profile_container")
-        label (for='uploadPhoto') Upload profile picture
-        input(type='file' name='profile-file' required='')
-     
-        input(id="submit_button" class="primary_button" type="submit" value="continue")
-            include components/nav.pug
+        label Upload profile picture
+        input(type='file' name='dogPhoto' required='')
+        
+        input(id="submit_button" class="primary_button_profile" type="submit" value="continue")
+include components/nav.pug
