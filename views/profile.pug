@@ -1,12 +1,10 @@
 doctype html
 html 
     include components/head.pug
-    style 
-        include ../static/public/css/profile.css
     body 
         include components/header.pug
         main 
-            article
+            article(class="details_container")
                 div 
                     div(class="image_container")
                         img(src=`${doggo.image_link}`, alt=`A picture of ${doggo.name}`)

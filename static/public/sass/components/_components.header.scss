@@ -1,0 +1,22 @@
+header {
+  @include flex(space-between, center);
+  background-color: $clrDark2;
+  height: 4rem;
+  padding: 0 1.5rem;
+
+  .header_logo {
+    font-weight: 400;
+    padding: 0;
+
+    span {
+      color: $clrLight1;
+      font-weight: 600;
+      font-style: italic;
+    }
+  }
+  img {
+    @include squareSize(2rem);
+    border: none;
+    border-radius: 50%;
+  }
+}

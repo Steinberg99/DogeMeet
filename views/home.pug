@@ -1,15 +1,13 @@
 doctype html
 html 
     include components/head.pug
-    style 
-        include ../static/public/css/home.css
     body 
         include components/header.pug
         main
             if(doggo) 
                 a(href=`/profile/${doggo.id}`) 
-                    article 
-                        div(class="image_container")
+                    article(class="doggo_container")
+                        div
                             img(src=`${doggo.image_link}`, alt=`A picture of ${doggo.name}`)
                         section 
                             div 
@@ -19,7 +17,7 @@ html
                 include components/like.pug
                 include components/nav.pug
             else 
-                article(id="empty_state_article")
+                article(class="empty")
                     h2 No more doggos :(
                     p No worries! These were just all the doggos in your area, change your search criteria to find more cute doggos.
                     a(class="primary_button" href="/search/") Change search
