@@ -17,7 +17,7 @@
     }
   }
 
-  li {
+  li a {
     @include flex(flex-start, center);
     flex-direction: row;
     background-color: $clrDark2;
