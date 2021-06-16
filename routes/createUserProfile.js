@@ -70,7 +70,7 @@ router.post("/createUserProfile", async (req, res) => {
     console.error(error);
 
   } finally {
-    res.render('addUserPhoto');
+    res.render('createUserProfile');
   }
 });
 

@@ -5,7 +5,7 @@ const upload = multer({ dest: 'uploads/' })
 
 router.get('/addDogPhoto', async (req, res) => {
     try {
-      res.render('addDogPhoto');
+      res.render('fullProfile');
     } catch (error) {
       console.log(error);
     }
