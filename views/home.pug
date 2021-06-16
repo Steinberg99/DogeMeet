@@ -5,7 +5,7 @@ html
         include components/header.pug
         main
             if(doggo) 
-                a(href=`/profile/${doggo.id}`) 
+                a(href=`/profile/${doggo._id}`) 
                     article(class="doggo_container")
                         div
                             img(src=`${doggo.image_link}`, alt=`A picture of ${doggo.name}`)
