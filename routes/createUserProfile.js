@@ -17,7 +17,6 @@ router.post("/createUserProfile", async (req, res) => {
     database = req.app.get('database');
 
     let userProfile = {
-        _id: '500691074',
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
