@@ -2,12 +2,12 @@ doctype html
 html 
     include components/head.pug
     style 
-        include ../static/public/css/profile.css
+        include ../static/public/css/createUserprofile.css
     body 
         include components/header.pug
         main 
     section 
-    h3(class="section_header") CREATE A DOG ACCOUNT
+    h3 CREATE A DOG ACCOUNT
     p(class="profileParagraph")
          | Next up, we are going to create an account for your doge. How exciting!
     form(action="/createDogProfile", method="post") 
