@@ -1,0 +1,81 @@
+.headerProfile {
+    padding: 1rem 0 0.75rem 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f8f8f8;
+    margin: 0 1.5em;
+  }
+
+.profileParagraph {
+    margin: 0 2em 1em;
+  }
+.userInput {
+background-image: none !important;
+}
+
+.primary_button_profile {
+    background-color: #f2befc;
+    color: #0b0e11;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 28.5px;
+    padding: 1rem 2rem;
+    margin: 2em 5em;
+}
+.password {
+    color: white;
+    padding-right: 5.5em;
+  }
+  
+  section {
+    margin: 3em 0 .2em 0;
+  }
+  
+  section div {
+    background-color: #151a21;
+    align-items: center;
+  }
+  
+  .profile_container {
+    border-top: 2px solid #242c37;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: .7em 7.5em .7em 1.5em;
+  }
+
+  label {
+    color: #ca9ce1;;
+  }
+
+  .change_password {
+    color: white;
+    text-decoration: underline;
+    margin: 1.5rem;
+    font-size: 12px;
+  }
+
+ input {
+    background-color: #151a21;
+    border: none;
+    color: white;
+  }
+
+  button {
+    display: block;
+    box-shadow: 1px 1px 10px rgba(255, 255, 255, 0.2);
+    margin: 0.5rem auto 1.5rem auto;
+  }
+  
+  input[type='submit']:disabled {
+    opacity: 0.5;
+  }
+
+  #requirements {
+    border-bottom: none;
+    margin: 1.5rem;
+    display: none;
+  }
+
