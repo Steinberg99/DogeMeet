@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const multer  = require('multer')
-const upload = multer({ dest: './static/public/images/uploads' })
+const path = require('path');
+const storage = multer.diskStorage({
+    destination: './static/public/images/uploads',
+    filename: function(req, file, cb){
+        cb(null,file.fieldname+ path.extname(file.originalname));
+    }
+});
+
+const upload = multer({storage: storage});
 
 router.get('/addUserPhoto', async (req, res) => {
     try {
