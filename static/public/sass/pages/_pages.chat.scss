@@ -1,0 +1,157 @@
+@mixin messageText($clr, $backgr, $radius) {
+  color: $clr;
+  background-color: $backgr;
+  border-radius: $radius;
+  max-width: 16rem;
+  padding: 0.5rem 1rem;
+}
+
+@mixin fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+@mixin dateTime {
+  font-size: 0.625rem;
+  color: $clrText2;
+  margin-bottom: 0.5rem;
+}
+
+.chat_header {
+  @include flex(flex-start, center);
+  @include fixed;
+  top: 0;
+
+  a img {
+    display: block;
+    margin-left: 0;
+  }
+
+  img,
+  h3 {
+    margin-left: 1rem;
+  }
+}
+
+.messages_container {
+  margin: 7rem 0 7.5rem 0;
+
+  .sent-message {
+    @include flex(flex-start, flex-end);
+    flex-direction: column;
+    padding: 0 1.5rem;
+    margin-top: 1rem;
+
+    + .sent-message {
+      margin-top: 0.375rem;
+
+      p {
+        border-radius: 1.125rem 0.25rem 0.25rem 1.125rem;
+      }
+
+      span {
+        display: none;
+      }
+    }
+
+    &.new-message {
+      margin-top: 1rem;
+
+      p {
+        border-radius: 1.125rem 1.125rem 0.25rem 1.125rem;
+      }
+    }
+
+    p {
+      @include messageText(
+        $clrDark1,
+        $clrLight2,
+        1.125rem 1.125rem 0.25rem 1.125rem
+      );
+    }
+
+    span {
+      @include dateTime;
+    }
+  }
+
+  .recieved-message {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    padding: 0 1.5rem;
+    margin-top: 1rem;
+
+    + .recieved-message {
+      margin-top: 0.375rem;
+
+      p {
+        border-radius: 0.25rem 1.125rem 1.125rem 0.25rem;
+      }
+
+      span {
+        display: none;
+      }
+    }
+
+    &.new-message {
+      margin-top: 1rem;
+
+      p {
+        border-radius: 1.125rem 1.125rem 1.125rem 0.25rem;
+      }
+    }
+
+    p {
+      @include messageText(
+        $clrText1,
+        $clrLight1,
+        1.125rem 1.125rem 1.125rem 0.25rem
+      );
+    }
+
+    span {
+      @include dateTime;
+    }
+  }
+
+  .new-message span {
+    display: block !important;
+  }
+}
+.message_form_container {
+  @include flex(flex-start, center);
+  @include fixed;
+  bottom: 0;
+  background-color: $clrDark2;
+  height: 4.5rem;
+  padding: 0 1.5rem;
+
+  form {
+    @include flex(flex-start, flex-start);
+    width: 100%;
+
+    textarea {
+      flex-grow: 1;
+      font-size: 0.875rem;
+      color: $clrText2;
+      border: 0.125rem solid $clrLight2;
+      border-radius: 1.5rem;
+      outline: none;
+      background-color: $clrDark1;
+      resize: none;
+      box-shadow: $shadow;
+      padding: 0.75rem 1.5rem;
+      margin-right: 1rem;
+    }
+
+    input[type='submit'] {
+      color: $clrText2;
+      border: none;
+      border-radius: 1.5rem;
+      background-color: $clrLight1;
+      box-shadow: $shadow;
+      @include squareSize(3rem);
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@mixin flex($justify, $align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin squareSize($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin imgOverlay {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(196, 196, 196, 0));
+}

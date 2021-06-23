@@ -1,23 +1,23 @@
 doctype html
 html 
     include components/head.pug
-    style 
-        include ../static/public/css/matches.css
     body 
         include components/header.pug
         main 
-            article 
-                h3(class="section_header") MATCHED DOGGOS
+            article(class="matches_container")
+                h3 MATCHED DOGGOS
                     span(class="liked_counter")=matchedDoggos.length
                 if(matchedDoggos.length > 0)
+                    ul
                         each doggo in matchedDoggos
                             li 
-                                img(src=doggo.profile_image_link, alt=`Profile picture of ${doggo.name}`)
-                                section 
-                                    h3= doggo.name
-                                    p= doggo.breed
+                                a(href=`/chat/${doggo._id}`) 
+                                    img(src=doggo.profile_image_link, alt=`Profile picture of ${doggo.name}`)
+                                    section 
+                                        h3= doggo.name
+                                        p= doggo.breed
                 else
-                    article(class="empty_state_article")
+                    article(class="empty")
                         p No worries! Continue liking untill you find your first match!
-                div
+                div(class="button_container")
                     a(class="primary_button" href="/search/") Search more doggos
