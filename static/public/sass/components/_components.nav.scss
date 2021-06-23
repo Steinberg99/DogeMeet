@@ -1,0 +1,19 @@
+nav {
+  position: fixed;
+  bottom: 1.5rem;
+  left: calc(50% - 7.25em);
+  ul {
+    @include flex(center, center);
+    background-color: $clrDark2;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+
+    li {
+      @include squareSize(1.5rem);
+
+      + li {
+        margin-left: 3rem;
+      }
+    }
+  }
+}

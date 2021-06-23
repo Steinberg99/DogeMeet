@@ -1,0 +1,49 @@
+.doggo_container {
+  position: relative;
+  padding: 0 1rem;
+  margin: 2rem 0 1.5rem 0;
+
+  img {
+    display: block;
+    border: $border;
+    border-radius: 0.75rem;
+    width: 100%;
+  }
+
+  > div::after {
+    @include imgOverlay;
+  }
+
+  section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 2.5rem 1rem 2.5rem;
+
+    div {
+      @include flex(space-between, flex-end);
+      margin-bottom: 0.375rem;
+    }
+  }
+}
+
+article.empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+
+  h2 {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: $shadow;
+  }
+}

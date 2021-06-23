@@ -1,0 +1,21 @@
+.like_form {
+  @include flex(center, center);
+  margin-bottom: 2rem;
+
+  input[type='submit'] {
+    background-color: $clrLight2;
+    box-shadow: $shadow;
+    border: none;
+    border-radius: 50%;
+    @include squareSize(3rem);
+
+    &:last-child {
+      background-color: $clrLight1;
+      opacity: 0.8;
+    }
+
+    + input[type='submit'] {
+      margin-left: 1.5rem;
+    }
+  }
+}

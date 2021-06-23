@@ -1,0 +1,40 @@
+@mixin heading($size) {
+  font-size: $size;
+  font-weight: 600;
+  color: $clrText1;
+}
+
+h1 {
+  @include heading(2rem);
+}
+
+h2 {
+  @include heading(1.5rem);
+}
+
+h3 {
+  @include heading(1.125rem);
+}
+
+h4 {
+  @include heading(1rem);
+}
+
+h5 {
+  @include heading(0.875rem);
+}
+
+p,
+li,
+label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: $clrText2;
+}
+
+body,
+button,
+input[type='submit'],
+textarea {
+  font-family: 'Poppins', sans-serif;
+}

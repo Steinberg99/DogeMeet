@@ -9,6 +9,7 @@ html
 section 
     h3(class="section_header") USER PROFILE
 form(action="/fullProfile", method="get") 
+<<<<<<< HEAD
      div(class="profile_container")
         label(for='name') Name
           input(type='text' name='name' value=userInfo.name)
@@ -76,5 +77,73 @@ section
 
         input(id="submit_button" class="primary_button" type="submit" value="save")
         input(id="submit_button" class="primary_button" type="submit" value="edit")
+=======
+    div(class="profile_container")
+        label(for='name') Name
+            input(type='text' name='name' value=userInfo.name)
+    div(class="profile_container")
+        label(for='email') Email
+        input(type='text' name='email' value=userInfo.email)
+    div(class="profile_container")
+        label(for='password') Password
+        input(type='text' name='password' value=userInfo.password)
+
+section 
+        h3(class="section_header") DOG PROFILE
+            div(class="profile_container")
+                label(for='name') Name
+                input(type='text' name='name' value=dogInfo.name)
+            div(class="profile_container")
+                label(for='age') Age
+                input(type='text' name='age' value=dogInfo.age)
+            div(class="profile_container")
+                label(for='breed') Breed
+                input(type='text' name='breed' value=dogInfo.breed)
+            div(class="profile_container")
+                label(for='description') Description
+                input(type='text' name='description' value=dogInfo.description)
+                label(for='vibe') Your dog's vibe
+                    ul(id="doge_vibe_list" class="checkbox_list")
+                        li 
+                            input(type="checkbox" id="cute" name="doggo_vibes[0]" value="cute")
+                            label(for="cute") Cute
+                        li 
+                            input(type="checkbox" id="playful" name="doggo_vibes[1]" value="playful")
+                            label(for="playful") Playful
+                        li 
+                            input(type="checkbox" id="fluffy" name="doggo_vibes[2]" value="fluffy")
+                            label(for="fluffy") Fluffy
+                        li 
+                            input(type="checkbox" id="relaxed" name="doggo_vibes[3]" value="relaxed")
+                            label(for="relaxed") Relaxed
+                        li
+                            input(type="checkbox" id="cool" name="doggo_vibes[4]" value="cool")
+                            label(for="cool") Cool
+                        li 
+                            input(type="checkbox" id="beautiful" name="doggo_vibes[5]" value="beautiful")
+                            label(for="beautiful") Beautiful
+                        li 
+                            input(type="checkbox" id="chubby" name="doggo_vibes[6]" value="chubby")
+                            label(for="chubby") Chubby
+                label(for='location') Your dog’s favorite place to walk
+                    ul(id="doge_vibe_list" class="checkbox_list")
+                        li 
+                            input(type="checkbox" id="beach" name="beach" value="beach")
+                            label(for="beach") Beach
+                        li 
+                            input(type="checkbox" id="forest" name="forest" value="forest")
+                            label(for="forest") Forest
+                        li 
+                            input(type="checkbox" id="park" name="park" value="park")
+                            label(for="park") Park
+                        li 
+                            input(type="checkbox" id="lake" name="lake" vlaue="lake")
+                            label(for="lake") Lake
+                        li
+                            input(type="checkbox" id="city_walk" name="city_walk" value="city_walk")
+                            label(for="city_walk") City walk  
+                             
+                            input(id="submit_button" class="primary_button" type="submit" value="save")
+>>>>>>> origin/main
 
 include components/nav.pug
