@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const app = express();
 
 router.get('/createDogProfile', async (req, res) => {
     try {
@@ -23,14 +22,26 @@ router.get('/createDogProfile', async (req, res) => {
         vibe: req.body.vibe,
         location: req.body.location
     };
-    const result = await database.collection('doggos').insertOne(dogProfile);
+    await database.collection('doggos').insertOne(dogProfile);
     console.log(dogProfile);
 
+    let dogeVibesList = document.querySelector('#doge_vibe_list');
+    let dogeVibes = dogeVibesList.getElementsByTagName('li');
+    
+    var vibeArray = [];
+    var checkboxes = document.querySelector('#doge_vibe_list')
+    
+    for (var i = 0; i < checkboxes.length; i++) {
+      vibeArray.push(checkboxes[i].value)
+    }
+    console.log (vibeArray);
+    
+    
 } catch (error) {
     console.error(error);
 
   } finally {
-    res.render('createDogProfile');
+    res.render('addDogPhoto');
   }
 });
 
