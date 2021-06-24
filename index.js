@@ -38,6 +38,9 @@ const chatRouter = require('./routes/chat.js');
 const createProfileRouter = require('./routes/createUserProfile.js');
 const userPhotoRouter = require('./routes/addUserPhoto');
 const createDogProfile = require('./routes/createDogProfile');
+const dogPhotoRouter = require('./routes/addDogPhoto');
+const fullProfileRouter = require('./routes/fullProfile');
+
 
 app.use('/', homeRouter); // Homepage route
 app.use('/', searchRouter); // Search route
@@ -46,10 +49,8 @@ app.use('/', matchesRouter); // Matches route
 app.use('/', createProfileRouter); // Create Profile route
 app.use('/', userPhotoRouter); // User photo route
 app.use('/', createDogProfile);  // Dog profile route
-// app.use('/', fullProfile); // Full profile route
-// app.use('/', userProfile); // User profile route
-
-// app.use('/', dogPhoto); // Dog photo route
+app.use('/', fullProfileRouter); // Full profile route
+app.use('/', dogPhotoRouter); // Dog photo route
 app.use('/', chatRouter); // Chat route
 
 app.use((req, res) => {

@@ -1,4 +1,5 @@
 const express = require('express');
+const { file } = require('googleapis/build/src/apis/file');
 const router = express.Router();
 const multer  = require('multer')
 const path = require('path');
@@ -20,13 +21,11 @@ router.get('/addUserPhoto', async (req, res) => {
   });
 
   router.post('/addUserPhoto', upload.single('userPhoto'), (req, res) => {
-    try {
-
-    } catch(error) {
-        console.log(error);
-    } finally {
-        res.render('createDogProfile');
-      }
+        console.log (req.file)
+        res.render('createDogProfile', {
+          file: req.file.originalname
+        });
+      
   });
 
 // Export the router

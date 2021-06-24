@@ -13,20 +13,18 @@ const upload = multer({storage: storage});
 
 router.get('/addDogPhoto', async (req, res) => {
     try {
-      res.render('fullProfile');
+      res.render('addDogPhoto');
     } catch (error) {
       console.log(error);
     }
   });
 
   router.post('/addDogPhoto', upload.single('dogPhoto'), (req, res) => {
-    try {
-      res.send(req.file);
-    } catch(error) {
-        console.log(error);
-    } finally {
-        res.render('fullProfile');
-      }
+        console.log (req.file)
+        res.render('fullProfile', {
+          file: req.file.originalname
+        });
+      
   });
 
 // Export the router

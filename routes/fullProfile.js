@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-  router.get("/fullProfile",  async (req, res) => {
+router.get("/fullProfile",  async (req, res) => {
     //let getProfile = null;
     const userInfo = {
         name: req.body.name,
@@ -13,13 +13,13 @@ const router = express.Router();
         age: req.body.age,
         breed: req.body.breed,
         description: req.body.description,
-        vibe: req.body.vibe,
+        vibe: (req.body.doggo_vibes),
         location: req.body.location
     };
 try {  
-      // Get the database connection
+    // Get the database connection
     database = req.app.get('database');
-    const userQuery = { _id: '500691074'};
+    const userQuery = { _id: '01'};
     getProfile = await database.collection('users').findOne(userQuery);
     
     const dogQuery = { doggoId: '10'};

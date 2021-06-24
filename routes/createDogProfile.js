@@ -19,25 +19,14 @@ router.get('/createDogProfile', async (req, res) => {
         age: req.body.age,
         breed: req.body.breed,
         description: req.body.description,
-        vibe: req.body.vibe,
+        vibe: req.body.doggo_vibes,
         location: req.body.location
     };
     await database.collection('doggos').insertOne(dogProfile);
     console.log(dogProfile);
+    //console.log (req.body);
 
-    let dogeVibesList = document.querySelector('#doge_vibe_list');
-    let dogeVibes = dogeVibesList.getElementsByTagName('li');
-    
-    var vibeArray = [];
-    var checkboxes = document.querySelector('#doge_vibe_list')
-    
-    for (var i = 0; i < checkboxes.length; i++) {
-      vibeArray.push(checkboxes[i].value)
-    }
-    console.log (vibeArray);
-    
-    
-} catch (error) {
+  } catch (error) {
     console.error(error);
 
   } finally {

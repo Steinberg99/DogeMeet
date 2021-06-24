@@ -9,14 +9,17 @@ html
                   h3 CREATE A DOG ACCOUNT
                     div(class="") 
                         label(for="name") Name
-                        input(type='text' name='name' value='name')
+                        input(type='text' name='name')
                     div(class="age_container") 
                         label(for="age") Age 
                         p(id="age_counter") Select an age
                         input(id="age_slider" type="range" name="age" value="0" step="1" min="0" max="15")
                     div(class="") 
                         label(for="name") Breed
-                        input(type='text' name='breed' value='breed')
+                        input(type='text' name='breed')
+                    div(class="") 
+                        label(for="name") Description
+                        input(type='text' name='description')
                     div 
                         h3 Doge Vibe
                         ul(id="doge_vibe_list" class="checkbox_list")
@@ -47,19 +50,19 @@ html
                         h3 Location Type
                         ul(id="location_types" class="checkbox_list")
                             li 
-                                input(type="checkbox" id="beach" name="beach")
+                                input(type="checkbox" id="beach" name="location[1]" value="beach")
                                 label(for="beach") Beach
                             li 
-                                input(type="checkbox" id="forest" name="forest")
+                                input(type="checkbox" id="forest" name="location[2]" value="forest")
                                 label(for="forest") Forest
                             li  
-                                input(type="checkbox" id="park" name="park")
+                                input(type="checkbox" id="park" name="location[3]" value="park")
                                 label(for="park") Park
                             li 
-                                input(type="checkbox" id="lake" name="lake")
+                                input(type="checkbox" id="lake" name="location[4]" value="lake")
                                 label(for="lake") Lake
                             li 
-                                input(type="checkbox" id="city_walk" name="city_walk")
+                                input(type="checkbox" id="city_walk" name="location[5]" value="city_walk")
                                 label(for="city_walk") City walk
        
                 input(id="submit_button" class="primary_button" type="submit" value="continue")
