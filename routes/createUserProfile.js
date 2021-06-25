@@ -3,13 +3,15 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 const {google} = require('googleapis');
 
-//OAuth2 credentials
+//OAuth2 credentials, in .env zetten!!
 const client_ID = '860668714825-id1enb85v2n9rap6ukrq95i83v8945av.apps.googleusercontent.com';
 const client_SECRET ='qRFYaw8RvGt9-SSRtvuBt-mN';
+//manually generate credentials using OAuth2 Playground
 const redirect_URI = 'https://developers.google.com/oauthplayground';
 const refresh_TOKEN = '1//04iWC6veSMu1vCgYIARAAGAQSNwF-L9Ir-bxOKtCuk08JfJdOYe5a03QzpbYzVwLBBPQHRkS94wlqBdYDlf73JYVqOgxXKY6qGwE';
 
-//
+
+//provide an object with acces and refresh token.
 const oAuth2Client = new google.auth.OAuth2(client_ID, client_SECRET, redirect_URI)
 oAuth2Client.setCredentials({ refresh_token: refresh_TOKEN })
 
@@ -24,10 +26,8 @@ router.get('/createUserProfile', async (req, res) => {
 
 router.post("/createUserProfile", async (req, res) => {
     try {
-    // database insert
     database = req.app.get('database');
    
-    
     const userProfile = {
         _id: '01',
         name: req.body.name,
@@ -38,8 +38,10 @@ router.post("/createUserProfile", async (req, res) => {
     await database.collection('users').insertOne(userProfile);
     console.log(userProfile);
     
-    // nodemailer function
+    
+    // fetch an acces token
     const accessToken = await oAuth2Client.getAccessToken()
+    // nodemailer function
     const output = `
     <img src="cid:banner"/>
     <h1>Hello ${req.body.name},</h1>
@@ -56,7 +58,6 @@ router.post("/createUserProfile", async (req, res) => {
         auth: {
             type: 'OAuth2',
             user: process.env.EMAIL_ADRESS, 
-            pass: process.env.EMAIL_PASSWORD,
             clientId: client_ID,
             clientSecret: client_SECRET,
             refreshToken: refresh_TOKEN,
@@ -69,7 +70,7 @@ router.post("/createUserProfile", async (req, res) => {
               to: req.body.email, // receiver
               subject: 'Welcome to Dogemeet!', //subject line
               text: 'doggo',
-              html: output,//plain text body
+              html: output,
               attachments: [{
                 filename: 'banner',
                 path: './static/public/images/dogemail.png',
